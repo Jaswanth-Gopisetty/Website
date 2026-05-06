@@ -7,9 +7,14 @@ export default function Footer() {
     <footer className="bg-brand-blueDark text-slate-300 mt-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid md:grid-cols-4 gap-10">
         <div>
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-teal to-brand-accent" />
-            <span className="font-bold text-white text-lg">Aurexa Technologies</span>
+          <div className="flex items-center gap-2 mb-3 bg-white rounded-lg px-3 py-2 w-fit">
+            <Image
+              src="/aurexa-logo.png"
+              alt="Aurexa Technologies"
+              width={140}
+              height={40}
+              className="h-9 w-auto"
+            />
           </div>
           <p className="text-sm">Where innovation meets compliance, and technology drives growth.</p>
         </div>
