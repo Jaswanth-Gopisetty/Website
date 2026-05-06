@@ -27,7 +27,8 @@ export default function Header() {
             width={140}
             height={40}
             priority
-            className="h-9 w-auto"
+            className="h-8 sm:h-9 w-auto max-w-[140px]"
+            style={{ objectFit: 'contain' }}
           />
         </Link>
         <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-700">

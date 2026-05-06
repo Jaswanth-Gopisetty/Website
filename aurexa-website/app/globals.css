@@ -7,7 +7,19 @@
   --fg: #0b1220;
 }
 
-html, body { background: var(--bg); color: var(--fg); }
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html, body { 
+  background: var(--bg); 
+  color: var(--fg); 
+  overflow-x: hidden;
+  width: 100%;
+}
 
 .gradient-hero {
   background: radial-gradient(80% 60% at 50% 0%, rgba(20,184,166,0.18), transparent 60%),

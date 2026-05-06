@@ -13,7 +13,8 @@ export default function Footer() {
               alt="Aurexa Technologies"
               width={140}
               height={40}
-              className="h-9 w-auto"
+              className="h-8 sm:h-9 w-auto max-w-[140px]"
+              style={{ objectFit: 'contain' }}
             />
           </div>
           <p className="text-sm">Where innovation meets compliance, and technology drives growth.</p>
