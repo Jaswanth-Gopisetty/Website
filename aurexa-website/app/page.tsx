@@ -1,6 +1,7 @@
 import Hero from "@/components/sections/Hero";
 import WhatWeDo from "@/components/sections/WhatWeDo";
 import USPCarousel from "@/components/sections/USPCarousel";
+import UniqueFeatures from "@/components/sections/UniqueFeatures";
 import About from "@/components/sections/About";
 import MissionVision from "@/components/sections/MissionVision";
 import Industries from "@/components/sections/Industries";
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Hero />
       <WhatWeDo />
       <USPCarousel />
+      <UniqueFeatures />
       <ProductsPanel />
       <QCMetricSpotlight />
       <About />

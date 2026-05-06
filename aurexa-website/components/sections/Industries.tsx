@@ -3,9 +3,9 @@ import { useState } from "react";
 import { FlaskConical, Ship, Pickaxe } from "lucide-react";
 
 const DATA = [
-  { icon: FlaskConical, name: "Life Sciences", body: "SOPs → Training → Change Control → CAPA → Audit evidence. Pharma, Biotech, Medical Devices, CROs.", uses: ["Batch record review", "21 CFR Part 11 e-sign", "CAPA effectiveness"] },
-  { icon: Ship,         name: "Marine",        body: "Fleet operations, maintenance records, incident management and audit evidence for classification bodies.", uses: ["Vessel SOPs", "Incident workflows", "Inspector exports"] },
-  { icon: Pickaxe,      name: "Mining",        body: "Safety workflows, environmental reporting, incident capture and controlled document management.", uses: ["Permit-to-work", "Environmental reports", "Audit packs"] },
+  { id: "life-sciences", icon: FlaskConical, name: "Life Sciences", body: "SOPs → Training → Change Control → CAPA → Audit evidence. Pharma, Biotech, Medical Devices, CROs.", uses: ["Batch record review", "21 CFR Part 11 e-sign", "CAPA effectiveness"] },
+  { id: "marine",        icon: Ship,         name: "Marine",        body: "Fleet operations, maintenance records, incident management and audit evidence for classification bodies.", uses: ["Vessel SOPs", "Incident workflows", "Inspector exports"] },
+  { id: "mining",        icon: Pickaxe,      name: "Mining",        body: "Safety workflows, environmental reporting, incident capture and controlled document management.", uses: ["Permit-to-work", "Environmental reports", "Audit packs"] },
 ];
 
 export default function Industries() {
@@ -21,7 +21,7 @@ export default function Industries() {
           </button>
         ))}
       </div>
-      <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-8 grid md:grid-cols-3 gap-6">
+      <div id={A.id} className="mt-8 scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-8 grid md:grid-cols-3 gap-6">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
             <A.icon className="text-brand-teal" />
