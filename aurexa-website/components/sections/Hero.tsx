@@ -20,7 +20,7 @@ export default function Hero() {
           </p>
           <p className="mt-4 max-w-3xl text-slate-300/90">
             We deliver enterprise-grade platforms and managed services that make compliance auditable, processes
-            measurable, and quality decisions timely. Our products — including <strong>QC-Metric</strong> — connect
+            measurable, and quality decisions timely. Our products — including <strong>QC Metric</strong> — connect
             documents, training and corrective workflows so quality becomes proactive instead of reactive.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FileText, GraduationCap, Layers, Activity, ClipboardList } from "lucide-react";
 
 const PRODUCTS = [
-  { id: "qc-metric", icon: Activity,      name: "QC-Metric (eQMS)",        tag: "Flagship", body: "Predictive quality intelligence: CAPA, Deviation, Change Control, Audit Trail, dynamic workflows.", href: "/qc-metric" },
+  { id: "qc-metric", icon: Activity,      name: "QC Metric (eQMS)",        tag: "Flagship", body: "Predictive quality intelligence: CAPA, Deviation, Change Control, Audit Trail, dynamic workflows.", href: "/qc-metric" },
   { id: "dms",       icon: FileText,      name: "Content Management",     tag: "DMS",      body: "Single source of truth for controlled content, redlines, audit-ready evidence.", href: "/products#dms" },
   { id: "tms",       icon: GraduationCap, name: "Training Management",    tag: "TMS",      body: "Competency-first training, auto-triggered learning, timestamped attestation.", href: "/products#tms" },
   { id: "cms",       icon: Layers,        name: "Quality Management",     tag: "QMS",      body: "Deviations, CAPA, complaints, OOS/OOT, change control with measurable outcomes.", href: "/products#cms" },

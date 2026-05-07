@@ -1,7 +1,7 @@
 const ROLES = [
   { title: "Product Analyst — QMS", responsibilities: ["Gather URS, translate into user stories", "Validate acceptance criteria", "Liaise with QA & engineering"], musts: ["GxP awareness", "Strong written English"] },
   { title: "QA Engineer — Regulated Apps", responsibilities: ["Manual + automated testing", "Release gating", "Validation artifacts"], musts: ["ISTQB or equivalent", "Cypress / Playwright"] },
-  { title: "Full-Stack Engineer (React / .NET)", responsibilities: ["Build modules across QC-Metric and CMS", "Performance tuning", "Code reviews"], musts: ["React 18+", ".NET 8 or higher"] },
+  { title: "Full-Stack Engineer (React / .NET)", responsibilities: ["Build modules across QC Metric and CMS", "Performance tuning", "Code reviews"], musts: ["React 18+", ".NET 8 or higher"] },
   { title: "DevOps / Cloud Engineer", responsibilities: ["Azure-first deployments", "CI/CD pipelines", "Compliance-aware infra"], musts: ["Azure DevOps", "Docker / Kubernetes"] },
   { title: "Implementation Consultant", responsibilities: ["Onboarding & validation packages", "Customer training", "Go-live support"], musts: ["Pharma / regulated industry experience"] },
 ];

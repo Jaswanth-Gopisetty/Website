@@ -19,13 +19,13 @@ export default function QCMetricSpotlight() {
       <div className="section grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <span className="text-xs uppercase tracking-widest text-brand-teal">Flagship Product</span>
-          <h2 className="h2 mt-3">QC-Metric — Predictive Quality Intelligence Platform</h2>
+          <h2 className="h2 mt-3">QC Metric — Predictive Quality Intelligence Platform</h2>
           <p className="lede mt-4">
             Multi-tenant eQMS that connects documents, training and corrective workflows into one auditable
             quality truth layer. Built on Next.js 15, React 19, Redux Toolkit and SignalR.
           </p>
           <Link href="/qc-metric" className="mt-6 inline-flex px-5 py-3 rounded-lg bg-brand-teal text-brand-blueDark font-semibold shadow-glow">
-            Explore QC-Metric
+            Explore QC Metric
           </Link>
         </div>
         <ul className="space-y-3">

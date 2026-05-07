@@ -22,7 +22,7 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-3">Products</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link href="/qc-metric">QC-Metric (eQMS)</Link></li>
+            <li><Link href="/qc-metric">QC Metric (eQMS)</Link></li>
             <li><Link href="/products#dms">Document Management</Link></li>
             <li><Link href="/products#tms">Training Management</Link></li>
             <li><Link href="/products#cms">Content Management</Link></li>
@@ -52,7 +52,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 text-xs flex flex-col md:flex-row items-center justify-between gap-2">
           <span>© {new Date().getFullYear()} Aurexa Technologies. All rights reserved.</span>
-          <span>QC-Metric™ is a trademark of Aurexa Technologies.</span>
+          <span>QC Metric™ is a trademark of Aurexa Technologies.</span>
         </div>
       </div>
     </footer>

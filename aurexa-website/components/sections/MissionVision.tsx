@@ -8,7 +8,7 @@ export default function MissionVision() {
           <Target className="text-brand-blue" />
           <h3 className="mt-3 text-2xl font-bold">Mission</h3>
           <p className="text-slate-600 mt-3"><strong>Today —</strong> empower regulated organizations to adopt digital workflows confidently through reliable, compliant and scalable solutions that improve quality, efficiency and cross-team collaboration.</p>
-          <p className="text-slate-600 mt-3"><strong>Tomorrow —</strong> evolve QC-Metric and the Aurexa ecosystem into a predictive quality intelligence platform: automated controls, AI-driven risk indicators, and cross-system intelligence so compliance moves from checklist to continuous assurance.</p>
+          <p className="text-slate-600 mt-3"><strong>Tomorrow —</strong> evolve QC Metric and the Aurexa ecosystem into a predictive quality intelligence platform: automated controls, AI-driven risk indicators, and cross-system intelligence so compliance moves from checklist to continuous assurance.</p>
         </div>
         <div className="rounded-2xl bg-white p-8 border border-slate-200">
           <Eye className="text-brand-teal" />

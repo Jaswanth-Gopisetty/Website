@@ -8,7 +8,7 @@ import RegionSwitcher from "./RegionSwitcher";
 const NAV = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
-  { href: "/qc-metric", label: "QC-Metric" },
+  { href: "/qc-metric", label: "QC Metric" },
   { href: "/industries", label: "Industries" },
   { href: "/about", label: "About" },
   { href: "/careers", label: "Careers" },

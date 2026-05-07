@@ -1,7 +1,7 @@
 import { Boxes, ServerCog, Workflow } from "lucide-react";
 
 const ITEMS = [
-  { icon: Boxes,     title: "Industry-Focused Products",     body: "Pre-validated modules for DMS, TMS, CMS, LIMS integrations and the QC-Metric quality suite (CAPA, Change Control, Deviations, Complaints, OOS/OOT, Audit workflows)." },
+  { icon: Boxes,     title: "Industry-Focused Products",     body: "Pre-validated modules for DMS, TMS, CMS, LIMS integrations and the QC Metric quality suite (CAPA, Change Control, Deviations, Complaints, OOS/OOT, Audit workflows)." },
   { icon: ServerCog, title: "Secure Hosting & Managed Services", body: "Compliance-ready environments, high availability, automated backups and SOC-style operational controls to preserve data integrity." },
   { icon: Workflow,  title: "End-to-End IT Services",        body: "System integration, migration, validation and custom development with GxP-aware processes and traceable audit evidence." },
 ];
