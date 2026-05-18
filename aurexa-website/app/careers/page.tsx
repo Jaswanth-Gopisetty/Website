@@ -7,7 +7,11 @@ export default function CareersPage() {
   return (
     <section className="section">
       <h1 className="h1">Careers at Aurexa</h1>
-      <p className="lede mt-2 text-black max-w-3xl">Join a specialist team building regulated software that matters. Expect collaborative teams, domain learning opportunities and real ownership over quality-critical products.</p>
+      <div className="mt-6 p-6 bg-gradient-to-r from-brand-blue/5 to-brand-teal/5 border-l-4 border-brand-blue rounded-lg">
+        <p className="text-xl font-semibold text-slate-900 leading-relaxed">
+          Join a specialist team building regulated software that matters. Expect collaborative teams, domain learning opportunities and real ownership over quality-critical products.
+        </p>
+      </div>
       <div className="mt-10 grid md:grid-cols-2 gap-6">
         {ROLES.map(r => (
           <details key={r.title} className="rounded-2xl border border-slate-200 bg-white p-6">

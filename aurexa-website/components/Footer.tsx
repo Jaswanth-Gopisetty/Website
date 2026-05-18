@@ -7,13 +7,13 @@ export default function Footer() {
     <footer className="bg-brand-blueDark text-white mt-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid md:grid-cols-3 gap-10">
         <div>
-          <div className="flex items-center gap-2 mb-3 bg-white rounded-lg px-3 py-2 w-fit">
+          <div className="mb-3">
             <Image
               src="/aurexa-logo.png"
               alt="Aurexa Technologies"
-              width={140}
-              height={40}
-              className="h-8 sm:h-9 w-auto max-w-[140px]"
+              width={220}
+              height={64}
+              className="h-14 sm:h-16 w-auto max-w-[220px]"
               style={{ objectFit: 'contain' }}
             />
           </div>

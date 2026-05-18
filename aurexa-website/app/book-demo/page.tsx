@@ -3,7 +3,19 @@ import { useState, useMemo } from "react";
 import { useRegion, REGION_DATA, Region } from "@/components/RegionContext";
 import { Calendar, CheckCircle2, ChevronRight, ChevronLeft, User, Mail, Building2, Layers } from "lucide-react";
 
-const INDUSTRIES = ["Life Sciences", "Marine", "Mining", "Other"] as const;
+const INDUSTRIES = [
+  "Life Sciences",
+  "Pharmaceuticals",
+  "Biotechnology",
+  "Medical Devices",
+  "Healthcare",
+  "Manufacturing",
+  "Clinical Research",
+  "Marine",
+  "Mining",
+  "Regulatory & Compliance-driven Enterprises",
+  "Other"
+] as const;
 
 const REGION_WINDOWS: Record<Region, string[]> = {
   "USA":         ["Mon–Fri  09:00 – 10:00 CT", "Mon–Fri  14:00 – 15:00 CT", "Mon–Fri  16:00 – 17:00 CT"],
@@ -14,22 +26,60 @@ const REGION_WINDOWS: Record<Region, string[]> = {
 
 type FormData = {
   name: string; email: string; org: string; industry: string;
-  date: string; window: string; note: string;
+  customIndustry: string; date: string; window: string; note: string;
 };
 
-const EMPTY: FormData = { name: "", email: "", org: "", industry: "", date: "", window: "", note: "" };
+const EMPTY: FormData = { name: "", email: "", org: "", industry: "", customIndustry: "", date: "", window: "", note: "" };
 
 export default function BookDemoPage() {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<FormData>(EMPTY);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const { region } = useRegion();
   const windows = REGION_WINDOWS[region];
   const ref = useMemo(() => "AUS-" + Math.random().toString(36).slice(2, 8).toUpperCase(), []);
 
   const set = (k: keyof FormData, v: string) => setData(s => ({ ...s, [k]: v }));
 
-  const step1Valid = data.name.trim() && data.email.trim() && data.org.trim() && data.industry;
+  const step1Valid = data.name.trim() && data.email.trim() && data.org.trim() && data.industry && (data.industry !== "Other" || data.customIndustry.trim());
   const step2Valid = data.date && data.window;
+
+  const handleBooking = async () => {
+    setLoading(true);
+    setError("");
+    
+    try {
+      const response = await fetch("/api/book-demo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          org: data.org,
+          industry: data.industry,
+          customIndustry: data.customIndustry,
+          date: data.date,
+          window: data.window,
+          note: data.note,
+          region,
+          reference: ref,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Failed to send booking confirmation");
+      }
+
+      setStep(3);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="section max-w-2xl">
@@ -38,10 +88,12 @@ export default function BookDemoPage() {
         <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-brand-teal font-semibold">
           <Calendar size={14} /> Book a Demo
         </span>
-        <h1 className="h1 mt-2">See QCMetric in Action</h1>
-        <p className="lede mt-2 text-black">
-          Book a short 30–45 minute walkthrough tailored to your industry and compliance needs. We&apos;ll prepare a sandbox demo aligned to your samples and compliance model.
-        </p>
+        <h1 className="text-3xl font-bold text-black mt-2">See QCMetric in Action</h1>
+        <div className="mt-6 p-6 bg-gradient-to-r from-brand-blue/5 to-brand-teal/5 border-l-4 border-brand-blue rounded-lg">
+          <p className="text-xl font-semibold text-slate-900 leading-relaxed">
+            Book a short 30–45 minute walkthrough tailored to your industry and compliance needs. We&apos;ll prepare a sandbox demo aligned to your samples and compliance model.
+          </p>
+        </div>
       </div>
 
       {/* Step indicator */}
@@ -82,22 +134,34 @@ export default function BookDemoPage() {
                 className="field-input" required />
             </Field>
             <Field icon={<Layers size={16} />} label="Industry" required>
-              <div className="mt-1 grid grid-cols-2 gap-2">
+              <select
+                value={data.industry}
+                onChange={e => {
+                  const val = e.target.value;
+                  set("industry", val);
+                  if (val !== "Other") set("customIndustry", "");
+                }}
+                title="Select your industry"
+                className="field-input"
+                required
+              >
+                <option value="">Select an industry</option>
                 {INDUSTRIES.map(ind => (
-                  <button
-                    key={ind}
-                    type="button"
-                    onClick={() => set("industry", ind)}
-                    className={`px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
-                      data.industry === ind
-                        ? "bg-brand-blue text-white border-brand-blue"
-                        : "border-slate-300 text-black hover:border-brand-blue"
-                    }`}
-                  >
-                    {ind}
-                  </button>
+                  <option key={ind} value={ind}>{ind}</option>
                 ))}
-              </div>
+              </select>
+              {data.industry === "Other" && (
+                <div className="mt-3">
+                  <input
+                    type="text"
+                    value={data.customIndustry}
+                    onChange={e => set("customIndustry", e.target.value)}
+                    placeholder="Enter your industry name"
+                    className="field-input"
+                    required
+                  />
+                </div>
+              )}
             </Field>
             <button
               onClick={() => setStep(2)}
@@ -153,13 +217,16 @@ export default function BookDemoPage() {
                 <ChevronLeft size={15} /> Back
               </button>
               <button
-                onClick={() => setStep(3)}
-                disabled={!step2Valid}
+                onClick={handleBooking}
+                disabled={!step2Valid || loading}
                 className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-blue text-white font-semibold disabled:opacity-40 hover:bg-brand-blueDark transition"
               >
-                Confirm booking <ChevronRight size={16} />
+                {loading ? "Booking..." : "Confirm booking"} {!loading && <ChevronRight size={16} />}
               </button>
             </div>
+            {error && (
+              <p className="mt-3 text-sm text-red-600">{error}</p>
+            )}
           </div>
         )}
 
@@ -176,7 +243,7 @@ export default function BookDemoPage() {
 
             <div className="mt-6 rounded-xl border border-slate-200 bg-brand-surface p-5 text-left space-y-2 text-sm text-black">
               <Row label="Organization"  value={data.org} />
-              <Row label="Industry"      value={data.industry} />
+              <Row label="Industry"      value={data.industry === "Other" ? data.customIndustry : data.industry} />
               <Row label="Date"          value={data.date} />
               <Row label="Time window"   value={data.window} />
               <Row label="Region"        value={region} />

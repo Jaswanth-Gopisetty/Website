@@ -20,7 +20,7 @@ export default function QCMetricSpotlight() {
         <div>
           <span className="text-xs uppercase tracking-widest text-brand-teal">At the heart of our platform portfolio</span>
           <h2 className="h2 mt-3">QCMetric — Predictive Quality Intelligence Platform</h2>
-          <p className="lede mt-4">
+          <p className="lede mt-4 leading-relaxed">
             An advanced eQMS platform that seamlessly connects Content management, training management, CAPA, deviations, change control, OOS, OOT, audit management, Vendor management, Customer Support, Risk management, Complaints management, Dynamic forms and Dynamic workflows into a single Quality Management System. Proactively identify risks, automate compliance activities, and track performance through live KPIs and dashboards.
           </p>
           <Link href="/qc-metric" className="mt-6 inline-flex px-5 py-3 rounded-lg bg-brand-teal text-brand-blueDark font-semibold shadow-glow">
@@ -31,7 +31,7 @@ export default function QCMetricSpotlight() {
           {FEATURES.map(f => (
             <li key={f} className="flex gap-3 items-start glass rounded-xl p-4">
               <CheckCircle2 className="text-brand-teal mt-0.5 shrink-0" size={20} />
-              <span className="text-slate-100">{f}</span>
+              <span className="text-slate-100 leading-relaxed">{f}</span>
             </li>
           ))}
         </ul>

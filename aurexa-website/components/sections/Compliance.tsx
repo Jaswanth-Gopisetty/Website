@@ -13,7 +13,7 @@ export default function Compliance() {
     <section className="bg-brand-surface">
       <div className="section">
         <h2 className="h2">Compliance coverage</h2>
-        <p className="text-black mt-2 max-w-2xl">Inspector-ready evidence packs for the regulations our customers face every day.</p>
+        <p className="text-black mt-2 max-w-2xl leading-relaxed">Inspector-ready evidence packs for the regulations our customers face every day.</p>
         <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white">
           <table className="w-full text-sm">
             <thead className="bg-brand-blueDark text-white">

@@ -13,8 +13,8 @@ export function RegionProvider({ children }: { children: ReactNode }) {
 export const useRegion = () => useContext(RegionCtx);
 
 export const REGION_DATA: Record<Region, { phone: string; address: string; hours: string; compliance: string; }> = {
-  "USA":         { phone: "+1 (555) 010-2025", address: "Austin, TX, USA",          hours: "Mon–Fri 9:00–18:00 CT",  compliance: "FDA 21 CFR Part 11 · HIPAA" },
+  "USA":         { phone: "+91 89777 80644", address: "Aurexa Technologies (P) LTD, Nellore, Andhra pradesh, India, 524004",          hours: "Mon–Fri 9:00–18:00 CT",  compliance: "FDA 21 CFR Part 11 · HIPAA" },
   "Europe":      { phone: "+44 20 4525 1010",  address: "London, United Kingdom",   hours: "Mon–Fri 9:00–18:00 GMT", compliance: "EU Annex 11 · GDPR" },
   "Middle East": { phone: "+971 4 555 1010",   address: "Dubai, UAE",               hours: "Sun–Thu 9:00–18:00 GST", compliance: "GxP · ISO 27001" },
-  "India":       { phone: "+91 40 4555 1010",  address: "Hyderabad, India",         hours: "Mon–Sat 9:30–18:30 IST", compliance: "CDSCO · GxP · ISO" },
+  "India":       { phone: "+91 89777 80644",   address: "Hyderabad, India",         hours: "Mon–Sat 9:30–18:30 IST", compliance: "CDSCO · GxP · ISO" },
 };

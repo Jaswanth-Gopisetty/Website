@@ -80,7 +80,7 @@ export default function UniqueFeatures() {
           Key Platform Features
         </span>
         <h2 className="h2 mt-3">What makes Aurexa unique</h2>
-        <p className="text-slate-600 mt-3">
+        <p className="text-slate-600 mt-3 leading-relaxed">
           Discover the powerful features that set Aurexa apart as your unified quality
           management platform.
         </p>
