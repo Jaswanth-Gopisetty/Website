@@ -7,10 +7,8 @@ import RegionSwitcher from "./RegionSwitcher";
 
 const NAV = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
-  { href: "/qc-metric", label: "QC Metric" },
-  { href: "/industries", label: "Industries" },
   { href: "/about", label: "About" },
+  { href: "/industries", label: "Industries" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ];
@@ -31,7 +29,7 @@ export default function Header() {
             style={{ objectFit: 'contain' }}
           />
         </Link>
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-700">
+        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-black">
           {NAV.map(n => <Link key={n.href} href={n.href} className="hover:text-brand-blue">{n.label}</Link>)}
         </nav>
         <div className="hidden md:flex items-center gap-3">

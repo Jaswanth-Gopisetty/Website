@@ -26,7 +26,7 @@ export default function USPCarousel() {
         <div className="flex items-end justify-between gap-4">
           <div>
             <h2 className="h2">Why teams choose Aurexa</h2>
-            <p className="text-slate-600 mt-2">Eight differentiators that make compliance a velocity advantage.</p>
+            <p className="text-black mt-2">Eight differentiators that make compliance a velocity advantage.</p>
           </div>
           <div className="flex items-center gap-2">
             <button onClick={prev} className="p-2 rounded-full bg-white border border-slate-200" aria-label="Previous"><ChevronLeft /></button>
@@ -46,12 +46,12 @@ export default function USPCarousel() {
               <div>
                 <span className="text-xs uppercase tracking-widest text-brand-teal">USP {i + 1}/{USPS.length}</span>
                 <h3 className="text-2xl md:text-3xl font-bold mt-2">{card.title}</h3>
-                <ul className="mt-5 space-y-2 text-slate-200">
+                <ul className="mt-5 space-y-2 text-white">
                   {card.points.map(p => <li key={p}>• {p}</li>)}
                 </ul>
                 <button className="mt-6 px-4 py-2 rounded-lg bg-brand-teal text-brand-blueDark font-semibold">See Example</button>
               </div>
-              <div className="rounded-xl glass grid place-items-center text-slate-200/60 text-sm">
+              <div className="rounded-xl glass grid place-items-center text-white text-sm">
                 [ Workflow micro-animation ]
               </div>
             </motion.div>

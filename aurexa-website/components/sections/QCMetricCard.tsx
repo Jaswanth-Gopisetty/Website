@@ -10,16 +10,14 @@ const FEATURES = [
   "GxP · FDA 21 CFR Part 11 · ISO · GDPR aligned",
 ];
 
-export default function ProductsPage() {
+export default function QCMetricCard() {
   return (
-    <section className="section">
-      <h1 className="h1">Products</h1>
-      <p className="lede mt-3 text-black max-w-3xl">
-        Our flagship platform for regulated industries — built for compliance, designed for scale.
-      </p>
-      <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-8 max-w-3xl">
+    <section id="qcmetric" className="section">
+      <h2 className="h2">Explore Products</h2>
+      <p className="text-black mt-2 max-w-2xl">Our flagship platform for regulated industries — built for compliance, designed for scale.</p>
+      <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-8 max-w-3xl">
         <span className="inline-block text-[10px] tracking-widest uppercase text-brand-accent font-bold">Flagship Product</span>
-        <h2 className="mt-2 text-2xl font-bold">QCMetric</h2>
+        <h3 className="mt-2 text-2xl font-bold">QCMetric</h3>
         <p className="text-black mt-3 leading-relaxed">
           QCMetric is an advanced, AI-powered eQMS platform that seamlessly connects quality, compliance and operational workflows into a single regulated system — purpose-built for life sciences, pharma, medical devices and other highly regulated industries.
         </p>

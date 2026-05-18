@@ -79,9 +79,9 @@ export default function UniqueFeatures() {
         <span className="text-xs uppercase tracking-widest text-brand-accent font-semibold">
           Key Platform Features
         </span>
-        <h2 className="h2 mt-3">What makes QC Metric unique</h2>
+        <h2 className="h2 mt-3">What makes Aurexa unique</h2>
         <p className="text-slate-600 mt-3">
-          Discover the powerful features that set QC Metric apart as your unified quality
+          Discover the powerful features that set Aurexa apart as your unified quality
           management platform.
         </p>
       </div>

@@ -6,7 +6,7 @@ export default function AboutPage() {
     <>
       <section className="section">
         <h1 className="h1">About Aurexa Technologies</h1>
-        <p className="lede mt-3 text-slate-600 max-w-3xl">A domain-first technology firm helping regulated and adjacent industries replace brittle manual processes with auditable, automated systems.</p>
+        <p className="lede mt-3 text-black max-w-3xl">Aurexa is a domain-first technology organization built to help regulated industries move beyond brittle, manual operations into a future of auditable, automated, and intelligent systems. We unite deep regulatory know-how with modern cloud engineering to deliver platforms that withstand inspection, accelerate compliance, and scale confidently with business growth.</p>
       </section>
       <About />
       <MissionVision />

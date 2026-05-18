@@ -13,7 +13,7 @@ export default function Compliance() {
     <section className="bg-brand-surface">
       <div className="section">
         <h2 className="h2">Compliance coverage</h2>
-        <p className="text-slate-600 mt-2 max-w-2xl">Inspector-ready evidence packs for the regulations our customers face every day.</p>
+        <p className="text-black mt-2 max-w-2xl">Inspector-ready evidence packs for the regulations our customers face every day.</p>
         <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white">
           <table className="w-full text-sm">
             <thead className="bg-brand-blueDark text-white">
@@ -23,7 +23,7 @@ export default function Compliance() {
               {ROWS.map(([s, c]) => (
                 <tr key={s} className="border-t border-slate-100">
                   <td className="px-5 py-3 font-medium">{s}</td>
-                  <td className="px-5 py-3 text-slate-600">{c}</td>
+                  <td className="px-5 py-3 text-black">{c}</td>
                 </tr>
               ))}
             </tbody>

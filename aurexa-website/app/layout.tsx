@@ -5,10 +5,10 @@ import Footer from "@/components/Footer";
 import { RegionProvider } from "@/components/RegionContext";
 
 export const metadata: Metadata = {
-  title: "Aurexa Technologies — Compliant eQMS & Quality Software",
+  title: "Aurexa Technologies — Enterprise Digital Platforms for Regulated Industries",
   description:
-    "Enterprise-grade eQMS, DMS, TMS and CMS for regulated industries. GxP and 21 CFR Part 11 ready. Featuring QC Metric.",
-  keywords: ["eQMS", "QMS", "QC Metric", "21 CFR Part 11", "GxP", "Aurexa"],
+    "Aurexa delivers enterprise digital platforms and managed services for regulated industries. Integrated quality, compliance, and operational control. GxP, FDA 21 CFR Part 11, ISO, GDPR, HIPAA ready.",
+  keywords: ["eQMS", "QMS", "21 CFR Part 11", "GxP", "Aurexa", "Compliance Management", "Quality Management", "Regulated Industries"],
 };
 
 export const viewport: Viewport = {

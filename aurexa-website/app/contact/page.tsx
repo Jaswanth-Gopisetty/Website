@@ -17,8 +17,8 @@ export default function ContactPage() {
     <section className="section grid lg:grid-cols-2 gap-10">
       <div>
         <h1 className="h1">Contact Aurexa</h1>
-        <p className="lede mt-2 text-slate-600">Sales, Support, Careers or Partnership — pick a queue and we&apos;ll route it.</p>
-        <ul className="mt-6 space-y-3 text-slate-700">
+        <p className="lede mt-2 text-black">Sales, Support, Careers or Partnership — pick a queue and we&apos;ll route it.</p>
+        <ul className="mt-6 space-y-3 text-black">
           <li><strong>Email (Sales):</strong> contact@aurexatech.com</li>
           <li><strong>Email (Support):</strong> support@aurexatech.com</li>
           <li><strong>Phone ({region}):</strong> {r.phone}</li>

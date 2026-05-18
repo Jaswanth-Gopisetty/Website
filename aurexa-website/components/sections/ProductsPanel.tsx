@@ -2,11 +2,11 @@ import Link from "next/link";
 import { FileText, GraduationCap, Layers, Activity, ClipboardList } from "lucide-react";
 
 const PRODUCTS = [
-  { id: "qc-metric", icon: Activity,      name: "QC Metric (eQMS)",        tag: "Flagship", body: "Predictive quality intelligence: CAPA, Deviation, Change Control, Audit Trail, dynamic workflows.", href: "/qc-metric" },
-  { id: "dms",       icon: FileText,      name: "Content Management",     tag: "DMS",      body: "Single source of truth for controlled content, redlines, audit-ready evidence.", href: "/products#dms" },
-  { id: "tms",       icon: GraduationCap, name: "Training Management",    tag: "TMS",      body: "Competency-first training, auto-triggered learning, timestamped attestation.", href: "/products#tms" },
-  { id: "cms",       icon: Layers,        name: "Quality Management",     tag: "QMS",      body: "Deviations, CAPA, complaints, OOS/OOT, change control with measurable outcomes.", href: "/products#cms" },
-  { id: "workflow",  icon: ClipboardList, name: "Workflow-Based Forms",   tag: "FORMS",    body: "Drag-and-drop form builder, conditional logic, e-signatures and reusable templates.", href: "/products#workflow" },
+  { id: "qc-metric", icon: Activity,      name: "QCMetric (eQMS)",        tag: "Flagship", body: "Predictive quality intelligence: CAPA, Deviation, Change Control, Audit Trail, Risk management, dynamic workflows.", href: "/qc-metric" },
+  { id: "cms",       icon: FileText,      name: "Content Management",     tag: "CMS",      body: "Single source of truth for controlled documents, version control, redlines, and audit-ready evidence.", href: "/products#cms" },
+  { id: "tms",       icon: GraduationCap, name: "Training Management",    tag: "TMS",      body: "Competency-first training, auto-triggered learning from document revisions, timestamped attestation.", href: "/products#tms" },
+  { id: "dynamic",   icon: ClipboardList, name: "Dynamic Forms & Workflows", tag: "FORMS",  body: "Drag-and-drop form builder, conditional logic, e-signatures, reusable templates and configurable workflows.", href: "/products#dynamic" },
+  { id: "support",   icon: Layers,        name: "Customer Support",       tag: "SUPPORT",  body: "Integrated support ticketing, case management, and customer communication tracking.", href: "/products#support" },
 ];
 
 export default function ProductsPanel() {

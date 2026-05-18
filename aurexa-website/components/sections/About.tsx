@@ -3,9 +3,9 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const TILES = [
-  { title: "Domain Expertise",        body: "Decades of life sciences, pharma and device experience embedded in every workflow.", examples: ["Audit evidence export pack", "Per-stage e-signatures"] },
-  { title: "Compliance & Validation", body: "Built to match GxP, FDA 21 CFR Part 11, EU Annex 11, ISO and data privacy expectations.", examples: ["Validation-ready IQ/OQ/PQ", "GAMP 5 aligned templates"] },
-  { title: "Product Innovation",      body: "Cloud-native architecture with AI-readiness to turn quality data into actionable insights.", examples: ["AI-powered similar-deviation discovery", "Predictive SLA flags"] },
+  { title: "Deep domain knowledge",        body: "Our team bring decades of frontline experience across life sciences, pharmaceuticals, medical devices, and other highly regulated sectors, ensuring every solution is rooted in real-world operational context.", examples: ["Canned audit evidence export", "Training auto-trigger from document revision"] },
+  { title: "Compliance-first engineering", body: "Every Aurexa platform is purpose-built to align with GxP, 21 CFR Part 11, ISO standards, and global data-privacy mandates — compliance is engineered in, never bolted on.", examples: ["Validation-ready IQ/OQ/PQ templates", "GAMP 5 aligned documentation"] },
+  { title: "Innovation at scale",      body: "Cloud-native foundations, advanced analytics, and AI-ready architectures transform quality and operational data into decision-grade insights that drive measurable business value. We take the opportunity to analyse and develop innovative solutions for regulated industries.", examples: ["AI-driven risk indicators", "Predictive quality intelligence"] },
 ];
 
 export default function About() {
@@ -13,9 +13,8 @@ export default function About() {
   return (
     <section className="section">
       <h2 className="h2">About Aurexa</h2>
-      <p className="lede mt-2 text-slate-600 max-w-3xl">
-        Aurexa Technologies is a domain-first technology firm that helps regulated and adjacent industries
-        replace brittle manual processes with auditable, automated systems.
+      <p className="lede mt-2 text-black max-w-3xl">
+        Aurexa is a domain-first technology organization built to help regulated industries move beyond brittle, manual operations into a future of auditable, automated, and intelligent systems. We unite deep regulatory know-how with modern cloud engineering to deliver platforms that withstand inspection, accelerate compliance, and scale confidently with business growth.
       </p>
       <div className="mt-8 space-y-3">
         {TILES.map((t, i) => (
@@ -25,7 +24,7 @@ export default function About() {
               <ChevronDown className={`transition ${open === i ? "rotate-180" : ""}`} />
             </button>
             {open === i && (
-              <div className="px-5 pb-5 text-slate-600">
+              <div className="px-5 pb-5 text-black">
                 <p>{t.body}</p>
                 <ul className="mt-3 grid sm:grid-cols-2 gap-2 text-sm">
                   {t.examples.map(e => <li key={e} className="rounded-lg bg-brand-surface px-3 py-2">• {e}</li>)}
