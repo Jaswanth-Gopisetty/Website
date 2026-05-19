@@ -4,7 +4,7 @@ import nodemailer from "nodemailer";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, org, industry, customIndustry, date, window, note, region, reference } = body;
+    const { name, email, org, industry, customIndustry, comments, date, window, note, region, reference } = body;
 
     const displayIndustry = industry === "Other" ? customIndustry : industry;
 
@@ -53,6 +53,7 @@ Date: ${date}
 Time Window: ${window}
 Region: ${region}
 Reference: ${reference}
+${comments ? `\nComments: ${comments}` : ""}
 ${note ? `\nNote: ${note}` : ""}
 
 What's Next?
@@ -130,6 +131,12 @@ https://www.aurexatech.com`,
           <span class="detail-label">Reference:</span>
           <span class="detail-value"><strong>${reference}</strong></span>
         </div>
+        ${comments ? `
+        <div class="detail-row" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #cbd5e1;">
+          <span class="detail-label">Comments:</span>
+          <span class="detail-value">${comments}</span>
+        </div>
+        ` : ""}
         ${note ? `
         <div class="detail-row" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #cbd5e1;">
           <span class="detail-label">Note:</span>
@@ -184,6 +191,7 @@ Demo Details:
 Date: ${date}
 Time Window: ${window}
 Region: ${region}
+${comments ? `\nComments: ${comments}` : ""}
 ${note ? `\nNote: ${note}` : ""}
 
 Reference: ${reference}
@@ -256,6 +264,12 @@ Action Required:
           <div class="info-label">Region:</div>
           <div class="info-value">${region}</div>
         </div>
+        ${comments ? `
+        <div class="info-row">
+          <div class="info-label">Comments:</div>
+          <div class="info-value">${comments}</div>
+        </div>
+        ` : ""}
         ${note ? `
         <div class="info-row">
           <div class="info-label">Note:</div>

@@ -54,6 +54,8 @@ export default function ContactPage() {
           <li><strong>Email (Sales):</strong> contact@aurexatech.com</li>
           <li><strong>Email (Support):</strong> support@aurexatech.com</li>
           <li><strong>Phone:</strong> {r.phone}, +91 77000 06639</li>
+          <li><strong>Primary Email:</strong> <a href="mailto:jyotsnadevi.r@aurexatech.com" className="text-brand-blue hover:underline">jyotsnadevi.r@aurexatech.com</a></li>
+          <li><strong>Secondary Email:</strong> <a href="mailto:prasad@aurexatech.com" className="text-brand-blue hover:underline">prasad@aurexatech.com</a></li>
           <li><strong>Office:</strong> {r.address}</li>
           <li><strong>Hours:</strong> {r.hours}</li>
         </ul>

@@ -26,10 +26,10 @@ const REGION_WINDOWS: Record<Region, string[]> = {
 
 type FormData = {
   name: string; email: string; org: string; industry: string;
-  customIndustry: string; date: string; window: string; note: string;
+  customIndustry: string; comments: string; date: string; window: string; note: string;
 };
 
-const EMPTY: FormData = { name: "", email: "", org: "", industry: "", customIndustry: "", date: "", window: "", note: "" };
+const EMPTY: FormData = { name: "", email: "", org: "", industry: "", customIndustry: "", comments: "", date: "", window: "", note: "" };
 
 export default function BookDemoPage() {
   const [step, setStep] = useState(1);
@@ -42,7 +42,7 @@ export default function BookDemoPage() {
   const [checkingAvailability, setCheckingAvailability] = useState(false);
   const { region } = useRegion();
   const windows = REGION_WINDOWS[region];
-  const ref = useMemo(() => "AUS-" + Math.random().toString(36).slice(2, 8).toUpperCase(), []);
+  const ref = useMemo(() => "ARX-" + Math.random().toString(36).slice(2, 8).toUpperCase(), []);
 
   const set = (k: keyof FormData, v: string) => setData(s => ({ ...s, [k]: v }));
 
@@ -93,6 +93,7 @@ export default function BookDemoPage() {
           org: data.org,
           industry: data.industry,
           customIndustry: data.customIndustry,
+          comments: data.comments,
           date: data.date,
           window: data.window,
           note: data.note,
@@ -202,6 +203,16 @@ export default function BookDemoPage() {
                 </div>
               )}
             </Field>
+            <div>
+              <label className="text-sm font-medium text-black">Comments <span className="text-slate-400 font-normal">(optional)</span></label>
+              <textarea 
+                rows={3} 
+                value={data.comments} 
+                onChange={e => set("comments", e.target.value)}
+                placeholder="Any specific requirements or questions..."
+                className="mt-1 w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30" 
+              />
+            </div>
             <button
               onClick={() => setStep(2)}
               disabled={!step1Valid}

@@ -10,31 +10,31 @@ const SLIDES = [
     headline: "Where Innovation Meets Compliance, and Technology Drives Growth.",
     description: "Aurexa Technologies delivers enterprise digital platforms and managed services designed to simplify compliance, strengthen operational control, and improve quality outcomes across regulated industries.",
     bg: "from-brand-blue/40 via-brand-teal/20 to-brand-blueDark/60",
-    imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=800&fit=crop", // Technology/Innovation
+    imageUrl: "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop", // Technology/Innovation
   },
   {
     headline: "Fully Auditable Processes & Real-Time Visibility",
     description: "Our solutions help organizations establish fully auditable processes, streamline complex workflows, and gain real-time visibility into critical business operations. By combining compliance-focused architecture with scalable cloud technologies, we enable businesses to manage quality, documentation, training, approvals, and regulatory requirements through a secure and centralized ecosystem.",
     bg: "from-brand-teal/40 via-brand-blue/20 to-brand-tealDark/60",
-    imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop", // Business/Workflow
+    imageUrl: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop", // Business/Workflow
   },
   {
     headline: "Empowering Regulated Industries",
     description: "At Aurexa Technologies, we empower regulated industries with intelligent digital platforms and managed services that drive compliance, operational excellence, and business transformation. Our enterprise-grade solutions are designed to simplify complex regulatory processes, enhance quality management, and provide organizations with complete visibility and control across critical operations.",
     bg: "from-brand-accent/40 via-brand-blue/20 to-brand-blueDark/60",
-    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop", // Corporate/Buildings
+    imageUrl: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop", // Corporate/Buildings
   },
   {
     headline: "Scalable, Secure & Compliance-Driven Platforms",
     description: "We specialize in delivering scalable, secure, and compliance-driven platforms that help businesses automate workflows, maintain data integrity, and achieve continuous regulatory readiness. From quality management and document control to training, approvals, audits, and compliance tracking, our solutions create a centralized digital ecosystem that supports efficiency, transparency, and accountability.",
     bg: "from-brand-tealDark/40 via-brand-blue/20 to-brand-blueDark/60",
-    imageUrl: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=800&fit=crop", // Security/Tech
+    imageUrl: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop", // Security/Tech
   },
   {
     headline: "Innovation & Industry Best Practices",
     description: "With a strong focus on innovation and industry best practices, Aurexa Technologies enables organizations to modernize legacy processes, reduce operational risk, and accelerate decision-making through real-time insights and intelligent automation.",
     bg: "from-brand-blue/40 via-brand-accent/20 to-brand-tealDark/60",
-    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop", // Analytics/Data
+    imageUrl: "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop", // Analytics/Data
   },
 ];
 
@@ -56,7 +56,7 @@ export default function Hero() {
   const current = SLIDES[slide] ?? SLIDES[0];
 
   return (
-    <section className="gradient-hero text-white relative overflow-hidden">
+    <section className="gradient-hero text-white relative overflow-hidden mt-6">
       {/* Background Image with Overlay */}
       <AnimatePresence mode="wait">
         <motion.div

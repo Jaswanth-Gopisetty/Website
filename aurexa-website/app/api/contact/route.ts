@@ -52,7 +52,7 @@ ${message}
     });
 
     // Generate reference number
-    const reference = "AUS-" + Math.random().toString(36).slice(2, 8).toUpperCase();
+    const reference = "ARX-" + Math.random().toString(36).slice(2, 8).toUpperCase();
 
     return NextResponse.json({ success: true, reference });
   } catch (error) {

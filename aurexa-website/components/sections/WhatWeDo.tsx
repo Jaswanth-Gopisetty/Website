@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Boxes, ServerCog, Workflow, ChevronDown, ChevronUp } from "lucide-react";
+import { Boxes, ServerCog, Workflow } from "lucide-react";
 
 const ITEMS = [
   { 
@@ -11,7 +11,8 @@ const ITEMS = [
     gradient: "bg-gradient-to-br from-brand-blue/10 to-brand-blueDark/5",
     iconBg: "bg-brand-blue/20",
     iconColor: "text-brand-blue",
-    buttonColor: "text-brand-blue hover:text-brand-blueDark"
+    buttonColor: "text-brand-blue hover:text-brand-blueDark",
+    image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
   },
   { 
     icon: ServerCog, 
@@ -31,7 +32,8 @@ const ITEMS = [
     gradient: "bg-gradient-to-br from-brand-teal/10 to-brand-tealDark/5",
     iconBg: "bg-brand-teal/20",
     iconColor: "text-brand-tealDark",
-    buttonColor: "text-brand-tealDark hover:text-brand-teal"
+    buttonColor: "text-brand-tealDark hover:text-brand-teal",
+    image: "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
   },
   { 
     icon: Workflow, 
@@ -50,68 +52,83 @@ const ITEMS = [
     gradient: "bg-gradient-to-br from-brand-accent/10 to-purple-500/5",
     iconBg: "bg-brand-accent/20",
     iconColor: "text-brand-accent",
-    buttonColor: "text-brand-accent hover:text-purple-700"
+    buttonColor: "text-brand-accent hover:text-purple-700",
+    image: "https://images.pexels.com/photos/3861951/pexels-photo-3861951.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
   },
 ];
 
 export default function WhatWeDo() {
-  const [expanded, setExpanded] = useState<Record<number, boolean>>({});
-  
-  const toggleCard = (index: number) => {
-    setExpanded(prev => ({ ...prev, [index]: !prev[index] }));
-  };
+  const [flipped, setFlipped] = useState<number | null>(null);
 
   return (
     <section className="section">
       <h2 className="h2">What we do</h2>
       <p className="text-black mt-2 max-w-2xl leading-relaxed">A short, scannable view of our value to regulated organisations.</p>
       <div className="mt-10 grid md:grid-cols-3 gap-6">
-        {ITEMS.map(({ icon: Icon, title, body, body2, bullets, footer, gradient, iconBg, iconColor, buttonColor }, index) => {
-          const isExpanded = expanded[index];
-          const hasMoreContent = body2 || bullets || footer;
-          
-          return (
-            <div key={title} className={`rounded-2xl border border-slate-200 p-6 hover:shadow-xl transition-all ${gradient}`}>
-              <div className={`w-11 h-11 rounded-xl ${iconBg} ${iconColor} grid place-items-center`}>
-                <Icon size={22} />
+        {ITEMS.map(({ icon: Icon, title, body, body2, bullets, footer, gradient, iconBg, iconColor, image }, index) => (
+          <div 
+            key={title}
+            className="h-96"
+            style={{ perspective: '1000px' }}
+            onMouseEnter={() => setFlipped(index)}
+            onMouseLeave={() => setFlipped(null)}
+          >
+            <div 
+              className="relative w-full h-full transition-transform duration-700"
+              style={{ 
+                transformStyle: 'preserve-3d',
+                transform: flipped === index ? 'rotateY(180deg)' : 'rotateY(0deg)'
+              }}
+            >
+              {/* Front Side */}
+              <div 
+                className="absolute inset-0 rounded-2xl border-2 border-slate-300 overflow-hidden shadow-lg"
+                style={{ backfaceVisibility: 'hidden' }}
+              >
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${image})` }}
+                />
+                <div className={`absolute inset-0 ${gradient} opacity-85`} />
+                <div className="relative h-full flex flex-col items-center justify-center p-6 text-center">
+                  <div className={`w-16 h-16 rounded-xl ${iconBg} ${iconColor} grid place-items-center shadow-lg`}>
+                    <Icon size={28} />
+                  </div>
+                  <h3 className="mt-4 font-bold text-xl text-white drop-shadow-lg">{title}</h3>
+                </div>
               </div>
-              <h3 className="mt-5 font-semibold text-lg text-slate-900">{title}</h3>
-              <p className="text-black mt-2 text-sm leading-relaxed">{body}</p>
               
-              {isExpanded && (
-                <>
-                  {body2 && <p className="text-black mt-2 text-sm leading-relaxed">{body2}</p>}
+              {/* Back Side */}
+              <div 
+                className={`absolute inset-0 rounded-2xl border-2 border-slate-300 overflow-hidden shadow-lg ${gradient} p-6 flex flex-col`}
+                style={{ 
+                  backfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg)'
+                }}
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className={`w-10 h-10 rounded-lg ${iconBg} ${iconColor} grid place-items-center shrink-0`}>
+                    <Icon size={20} />
+                  </div>
+                  <h3 className="font-bold text-lg text-slate-900">{title}</h3>
+                </div>
+                <div className="overflow-y-auto flex-1 space-y-2">
+                  <p className="text-slate-800 text-xs leading-relaxed">{body}</p>
+                  {body2 && <p className="text-slate-800 text-xs leading-relaxed">{body2}</p>}
                   {bullets && (
                     <>
-                      <p className="text-black mt-3 text-sm font-medium">Our {title.includes('Services') ? 'managed services' : 'services'} include:</p>
-                      <ul className="mt-2 text-black text-sm space-y-1.5 leading-relaxed">
-                        {bullets.map(b => <li key={b} className="leading-relaxed">• {b}</li>)}
+                      <p className="text-slate-900 text-xs font-semibold mt-2">Our {title.includes('Services') ? 'managed services' : 'services'} include:</p>
+                      <ul className="text-slate-800 text-xs space-y-1 leading-relaxed">
+                        {bullets.map(b => <li key={b}>• {b}</li>)}
                       </ul>
                     </>
                   )}
-                  {footer && <p className="text-black mt-3 text-sm leading-relaxed">{footer}</p>}
-                </>
-              )}
-              
-              {hasMoreContent && (
-                <button
-                  onClick={() => toggleCard(index)}
-                  className={`mt-4 flex items-center gap-1.5 ${buttonColor} text-sm font-medium transition-colors`}
-                >
-                  {isExpanded ? (
-                    <>
-                      See less <ChevronUp size={16} />
-                    </>
-                  ) : (
-                    <>
-                      See more <ChevronDown size={16} />
-                    </>
-                  )}
-                </button>
-              )}
+                  {footer && <p className="text-slate-800 text-xs leading-relaxed mt-2">{footer}</p>}
+                </div>
+              </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </section>
   );

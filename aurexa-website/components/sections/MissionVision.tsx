@@ -1,6 +1,10 @@
-import { Target, Eye } from "lucide-react";
+"use client";
+import { useState } from "react";
+import { Target, Eye, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function MissionVision() {
+  const [expandedMission, setExpandedMission] = useState(false);
+
   return (
     <section className="bg-brand-surface">
       <div className="section grid md:grid-cols-2 gap-8">
@@ -10,7 +14,19 @@ export default function MissionVision() {
           </div>
           <h3 className="mt-3 text-2xl font-bold">Mission</h3>
           <p className="text-black mt-3 leading-relaxed"><strong>Current Mission —</strong> To empower regulated organizations to adopt digital workflows confidently through reliable, compliant and scalable solutions that improve quality, efficiency and cross-team collaboration.</p>
-          <p className="text-black mt-3 leading-relaxed"><strong>Future Scope —</strong> To evolve Qcmetric and the Aurexa ecosystem into a predictive quality intelligence platform: Integrating automated controls, AI-driven risk indicators, and cross-system intelligence so compliance moves from checklist to continuous assurance.</p>
+          {expandedMission && (
+            <p className="text-black mt-3 leading-relaxed"><strong>Future Scope —</strong> To evolve Qcmetric and the Aurexa ecosystem into a predictive quality intelligence platform: Integrating automated controls, AI-driven risk indicators, and cross-system intelligence so compliance moves from checklist to continuous assurance.</p>
+          )}
+          <button
+            onClick={() => setExpandedMission(!expandedMission)}
+            className="mt-4 text-brand-blue hover:text-brand-blueDark font-medium text-sm flex items-center gap-1 transition-colors"
+          >
+            {expandedMission ? (
+              <>See less <ChevronUp size={16} /></>
+            ) : (
+              <>See more <ChevronDown size={16} /></>
+            )}
+          </button>
         </div>
         <div className="rounded-2xl bg-gradient-to-br from-brand-teal/10 to-brand-tealDark/5 p-8 border border-slate-200 hover:shadow-xl transition-all">
           <div className="w-12 h-12 rounded-xl bg-brand-teal/20 grid place-items-center">
