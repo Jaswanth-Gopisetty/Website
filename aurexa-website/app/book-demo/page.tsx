@@ -36,7 +36,7 @@ export default function BookDemoPage() {
   const [data, setData] = useState<FormData>(EMPTY);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [availability, setAvailability] = useState<Record<string, boolean>>({});
+  const [availability, setAvailability] = useState<Record<string, { available: number; total: number }>>({});
   const [dynamicWindows, setDynamicWindows] = useState<string[]>([]);
   const [checkingAvailability, setCheckingAvailability] = useState(false);
   const { region } = useRegion();
@@ -211,7 +211,7 @@ export default function BookDemoPage() {
             <h2 className="text-lg font-bold text-black">Preferred date &amp; time</h2>
             <p className="text-sm text-slate-500">
               {data.date 
-                ? `Showing real-time availability for ${new Date(data.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })} in the ${region} region.`
+                ? `Showing real-time seat availability for ${new Date(data.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })} in the ${region} region. Each session has 100 seats.`
                 : `Select a date to view available time slots for the ${region} region. Change region using the selector in the header.`
               }
             </p>
@@ -237,38 +237,64 @@ export default function BookDemoPage() {
               )}
               
               {data.date && !checkingAvailability && dynamicWindows.length > 0 && (
-                <div className="mt-2 grid gap-2">
-                  {dynamicWindows.map(w => {
-                    const isAvailable = availability[w] !== false;
-                    const isSelected = data.window === w;
-                    
-                    return (
-                      <button
-                        key={w}
-                        type="button"
-                        onClick={() => isAvailable && set("window", w)}
-                        disabled={!isAvailable}
-                        className={`px-4 py-3 rounded-lg border text-sm text-left font-medium transition-colors ${
-                          isSelected
-                            ? "bg-brand-blue text-white border-brand-blue"
-                            : isAvailable
-                            ? "border-slate-300 text-black hover:border-brand-blue hover:bg-slate-50"
-                            : "border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <span>{w}</span>
-                          {!isAvailable && (
-                            <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded">Booked</span>
-                          )}
-                          {isAvailable && !isSelected && (
-                            <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded">Available</span>
-                          )}
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
+                <>
+                  <div className="mt-2 mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="font-medium text-blue-900">Total Capacity:</span>
+                      <span className="text-blue-700">
+                        {dynamicWindows.reduce((sum, w) => sum + (availability[w]?.available || 0), 0)} seats available across {dynamicWindows.length} sessions
+                      </span>
+                    </div>
+                  </div>
+                  <div className="grid gap-2">
+                    {dynamicWindows.map(w => {
+                      const slotInfo = availability[w];
+                      const isAvailable = slotInfo && slotInfo.available > 0;
+                      const isSelected = data.window === w;
+                      const availableSeats = slotInfo?.available || 0;
+                      const totalSeats = slotInfo?.total || 100;
+                      const percentAvailable = (availableSeats / totalSeats) * 100;
+                      
+                      // Determine badge color based on availability
+                      let badgeClass = "bg-emerald-100 text-emerald-700";
+                      let statusText = `${availableSeats} seats left`;
+                      
+                      if (availableSeats === 0) {
+                        badgeClass = "bg-red-100 text-red-700";
+                        statusText = "Fully Booked";
+                      } else if (percentAvailable <= 20) {
+                        badgeClass = "bg-orange-100 text-orange-700";
+                        statusText = `Only ${availableSeats} left!`;
+                      } else if (percentAvailable <= 50) {
+                        badgeClass = "bg-yellow-100 text-yellow-700";
+                        statusText = `${availableSeats} seats left`;
+                      }
+                      
+                      return (
+                        <button
+                          key={w}
+                          type="button"
+                          onClick={() => isAvailable && set("window", w)}
+                          disabled={!isAvailable}
+                          className={`px-4 py-3 rounded-lg border text-sm font-medium transition-colors ${
+                            isSelected
+                              ? "bg-brand-blue text-white border-brand-blue"
+                              : isAvailable
+                              ? "border-slate-300 text-black hover:border-brand-blue hover:bg-slate-50"
+                              : "border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="text-left flex-1">{w}</span>
+                            <span className={`text-xs px-2 py-0.5 rounded ml-3 whitespace-nowrap ${isSelected ? "bg-white/20 text-white" : badgeClass}`}>
+                              {statusText}
+                            </span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </>
               )}
             </div>
 

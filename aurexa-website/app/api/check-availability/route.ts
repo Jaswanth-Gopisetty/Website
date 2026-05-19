@@ -57,56 +57,61 @@ export async function POST(req: NextRequest) {
     // Generate windows with the actual day abbreviation
     const windows = templates.map(t => `${dayAbbr}  ${t.time} ${t.timezone}`);
 
-    // Simulate realistic availability patterns
-    const availability: Record<string, boolean> = {};
+    // Simulate realistic seat availability patterns
+    const TOTAL_SEATS = 100;
+    const availability: Record<string, { available: number; total: number }> = {};
 
     windows.forEach((window, index) => {
-      // Logic to mark some slots as booked:
-      // - Morning slots (index 0) are often booked on Mondays and Fridays
-      // - Afternoon slots more likely booked mid-week
-      // - Some randomness based on day of month
-      
-      let isAvailable = true;
+      // Calculate booked seats based on deterministic patterns
+      let bookedSeats = 0;
 
       // Weekends check (0 = Sunday, 6 = Saturday)
       if (region === "USA" || region === "Europe") {
         if (dayOfWeek === 0 || dayOfWeek === 6) {
-          isAvailable = false; // No demos on weekends for these regions
+          bookedSeats = TOTAL_SEATS; // Fully booked (no demos on weekends)
         }
       }
 
       if (region === "Middle East" && (dayOfWeek === 5 || dayOfWeek === 6)) {
-        isAvailable = false; // Friday/Saturday off for Middle East
+        bookedSeats = TOTAL_SEATS; // Friday/Saturday off for Middle East
       }
 
       if (region === "India" && dayOfWeek === 0) {
-        isAvailable = false; // Sunday off for India
+        bookedSeats = TOTAL_SEATS; // Sunday off for India
       }
 
-      // Simulate some slots being booked (deterministic based on date)
-      if (isAvailable) {
-        // Morning slots more likely booked on Mondays (dayOfWeek === 1)
-        if (index === 0 && dayOfWeek === 1 && dayOfMonth % 2 === 0) {
-          isAvailable = false;
+      // Simulate varying booking levels for available days
+      if (bookedSeats < TOTAL_SEATS) {
+        // Morning slots (index 0) - typically 40-70% booked
+        if (index === 0) {
+          bookedSeats = 40 + ((dayOfMonth * 3 + dayOfWeek) % 31);
         }
 
-        // Afternoon slots more likely booked on Wednesdays (dayOfWeek === 3)
-        if (index === 1 && dayOfWeek === 3 && dayOfMonth % 3 === 0) {
-          isAvailable = false;
+        // Afternoon slots (index 1) - typically 50-80% booked (more popular)
+        if (index === 1) {
+          bookedSeats = 50 + ((dayOfMonth * 5 + dayOfWeek * 2) % 31);
         }
 
-        // Late slots sometimes booked on Thursdays (dayOfWeek === 4)
-        if (index === 2 && dayOfWeek === 4 && dayOfMonth % 2 === 1) {
-          isAvailable = false;
+        // Late slots (index 2) - typically 30-60% booked
+        if (index === 2) {
+          bookedSeats = 30 + ((dayOfMonth * 2 + dayOfWeek) % 31);
         }
 
-        // Some random unavailability based on day of month
-        if ((dayOfMonth + index) % 5 === 0) {
-          isAvailable = false;
-        }
+        // Add some variation based on day of week
+        if (dayOfWeek === 1) bookedSeats += 10; // Mondays busier
+        if (dayOfWeek === 5) bookedSeats += 5;  // Fridays slightly busier
+        if (dayOfWeek === 2) bookedSeats -= 5;  // Tuesdays quieter
+
+        // Ensure bookings don't exceed total or go negative
+        bookedSeats = Math.max(0, Math.min(TOTAL_SEATS, bookedSeats));
       }
 
-      availability[window] = isAvailable;
+      const availableSeats = TOTAL_SEATS - bookedSeats;
+
+      availability[window] = {
+        available: availableSeats,
+        total: TOTAL_SEATS
+      };
     });
 
     // Simulate network delay for realistic UX
