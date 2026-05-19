@@ -1,7 +1,7 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useRegion, REGION_DATA, Region } from "@/components/RegionContext";
-import { Calendar, CheckCircle2, ChevronRight, ChevronLeft, User, Mail, Building2, Layers } from "lucide-react";
+import { Calendar, CheckCircle2, ChevronRight, ChevronLeft, User, Mail, Building2, Layers, Loader2 } from "lucide-react";
 
 const INDUSTRIES = [
   "Life Sciences",
@@ -36,6 +36,9 @@ export default function BookDemoPage() {
   const [data, setData] = useState<FormData>(EMPTY);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [availability, setAvailability] = useState<Record<string, boolean>>({});
+  const [dynamicWindows, setDynamicWindows] = useState<string[]>([]);
+  const [checkingAvailability, setCheckingAvailability] = useState(false);
   const { region } = useRegion();
   const windows = REGION_WINDOWS[region];
   const ref = useMemo(() => "AUS-" + Math.random().toString(36).slice(2, 8).toUpperCase(), []);
@@ -44,6 +47,35 @@ export default function BookDemoPage() {
 
   const step1Valid = data.name.trim() && data.email.trim() && data.org.trim() && data.industry && (data.industry !== "Other" || data.customIndustry.trim());
   const step2Valid = data.date && data.window;
+
+  // Fetch availability when date changes
+  useEffect(() => {
+    if (data.date && region) {
+      setCheckingAvailability(true);
+      setAvailability({});
+      setDynamicWindows([]);
+      
+      // Reset selected window if date changes
+      setData(prev => ({ ...prev, window: "" }));
+
+      fetch("/api/check-availability", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ date: data.date, region }),
+      })
+        .then(res => res.json())
+        .then(result => {
+          if (result.success && result.availability) {
+            setAvailability(result.availability);
+            if (result.windows) {
+              setDynamicWindows(result.windows);
+            }
+          }
+        })
+        .catch(err => console.error("Failed to check availability:", err))
+        .finally(() => setCheckingAvailability(false));
+    }
+  }, [data.date, region]);
 
   const handleBooking = async () => {
     setLoading(true);
@@ -177,7 +209,12 @@ export default function BookDemoPage() {
         {step === 2 && (
           <div className="grid gap-5">
             <h2 className="text-lg font-bold text-black">Preferred date &amp; time</h2>
-            <p className="text-sm text-slate-500">Showing available windows for <strong className="text-black">{region}</strong> region. Change region using the selector in the header.</p>
+            <p className="text-sm text-slate-500">
+              {data.date 
+                ? `Showing real-time availability for ${new Date(data.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })} in the ${region} region.`
+                : `Select a date to view available time slots for the ${region} region. Change region using the selector in the header.`
+              }
+            </p>
 
             <Field label="Preferred date" required>
               <input type="date" value={data.date} min={new Date().toISOString().split("T")[0]}
@@ -187,22 +224,52 @@ export default function BookDemoPage() {
 
             <div>
               <label className="text-sm font-medium text-black">Available time windows <span className="text-red-500">*</span></label>
-              <div className="mt-2 grid gap-2">
-                {windows.map(w => (
-                  <button
-                    key={w}
-                    type="button"
-                    onClick={() => set("window", w)}
-                    className={`px-4 py-3 rounded-lg border text-sm text-left font-medium transition-colors ${
-                      data.window === w
-                        ? "bg-brand-blue text-white border-brand-blue"
-                        : "border-slate-300 text-black hover:border-brand-blue"
-                    }`}
-                  >
-                    {w}
-                  </button>
-                ))}
-              </div>
+              
+              {!data.date && (
+                <p className="mt-2 text-sm text-slate-500 italic">Please select a date first to see available time slots</p>
+              )}
+              
+              {data.date && checkingAvailability && (
+                <div className="mt-2 flex items-center gap-2 text-sm text-slate-600">
+                  <Loader2 size={16} className="animate-spin" />
+                  <span>Checking availability...</span>
+                </div>
+              )}
+              
+              {data.date && !checkingAvailability && dynamicWindows.length > 0 && (
+                <div className="mt-2 grid gap-2">
+                  {dynamicWindows.map(w => {
+                    const isAvailable = availability[w] !== false;
+                    const isSelected = data.window === w;
+                    
+                    return (
+                      <button
+                        key={w}
+                        type="button"
+                        onClick={() => isAvailable && set("window", w)}
+                        disabled={!isAvailable}
+                        className={`px-4 py-3 rounded-lg border text-sm text-left font-medium transition-colors ${
+                          isSelected
+                            ? "bg-brand-blue text-white border-brand-blue"
+                            : isAvailable
+                            ? "border-slate-300 text-black hover:border-brand-blue hover:bg-slate-50"
+                            : "border-slate-200 bg-slate-50 text-slate-400 cursor-not-allowed"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span>{w}</span>
+                          {!isAvailable && (
+                            <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded">Booked</span>
+                          )}
+                          {isAvailable && !isSelected && (
+                            <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded">Available</span>
+                          )}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             <div>
