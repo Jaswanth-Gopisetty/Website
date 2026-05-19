@@ -3,9 +3,9 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const TILES = [
-  { title: "Deep domain knowledge",        body: "Our team bring decades of frontline experience across life sciences, pharmaceuticals, medical devices, and other highly regulated sectors, ensuring every solution is rooted in real-world operational context.", examples: ["Canned audit evidence export", "Training auto-trigger from document revision"] },
-  { title: "Compliance-first engineering", body: "Every Aurexa platform is purpose-built to align with GxP, 21 CFR Part 11, ISO standards, and global data-privacy mandates — compliance is engineered in, never bolted on.", examples: ["Validation-ready IQ/OQ/PQ templates", "GAMP 5 aligned documentation"] },
-  { title: "Innovation at scale",      body: "Cloud-native foundations, advanced analytics, and AI-ready architectures transform quality and operational data into decision-grade insights that drive measurable business value. We take the opportunity to analyse and develop innovative solutions for regulated industries.", examples: ["AI-driven risk indicators", "Predictive quality intelligence"] },
+  { title: "Deep domain knowledge",        body: "At Aurexa Technologies our team brings decades of hands-on expertise across life sciences, pharmaceuticals, medical devices, and other highly regulated industries. This deep domain knowledge enables us to design solutions grounded in real-world operational challenges, regulatory expectations, and industry best practices. By combining practical industry experience with technology-driven innovation, we help organizations streamline compliance, improve quality processes, and achieve operational excellence with confidence.", examples: [] },
+  { title: "Compliance-first engineering", body: "At Aurexa Technologies compliance-first engineering is embedded into the foundation of every platform we build. Our solutions are purpose-designed to align with GxP requirements, 21 CFR Part 11, ISO standards, and global data privacy regulations, ensuring regulatory readiness from day one. Rather than treating compliance as an afterthought, we engineer it directly into system architecture, workflows, security controls, audit trails, and validation frameworks to deliver reliable, inspection-ready digital solutions for highly regulated industries.", examples: [] },
+  { title: "Innovation at scale",      body: "At Aurexa Technologies innovation at scale is driven through cloud-native technologies, advanced analytics, and AI-ready architectures that convert quality and operational data into actionable, decision-grade insights. We continuously analyze evolving industry challenges to develop innovative, scalable solutions tailored for regulated environments. By combining modern digital capabilities with deep regulatory understanding, we enable organizations to improve efficiency, accelerate decision-making, and deliver measurable business value across enterprise operations.", examples: [] },
 ];
 
 export default function About() {
@@ -28,9 +28,11 @@ export default function About() {
             {open === i && (
               <div className="px-5 pb-5 text-slate-700">
                 <p className="leading-relaxed">{t.body}</p>
-                <ul className="mt-3 grid sm:grid-cols-2 gap-2 text-sm">
-                  {t.examples.map(e => <li key={e} className="rounded-lg bg-brand-surface px-3 py-2">• {e}</li>)}
-                </ul>
+                {t.examples.length > 0 && (
+                  <ul className="mt-3 grid sm:grid-cols-2 gap-2 text-sm">
+                    {t.examples.map(e => <li key={e} className="rounded-lg bg-brand-surface px-3 py-2">• {e}</li>)}
+                  </ul>
+                )}
               </div>
             )}
           </div>

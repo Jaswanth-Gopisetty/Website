@@ -110,7 +110,7 @@ export default function UniqueFeatures() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.3 }}
-            className="rounded-2xl border border-slate-200 bg-white p-8 md:p-10 grid md:grid-cols-3 gap-8"
+            className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-8 md:p-10 grid md:grid-cols-3 gap-8 shadow-md"
           >
             <div className="md:col-span-1">
               <div className="w-14 h-14 rounded-2xl bg-brand-teal/10 text-brand-tealDark grid place-items-center">

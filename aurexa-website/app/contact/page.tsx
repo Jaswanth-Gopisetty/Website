@@ -53,10 +53,9 @@ export default function ContactPage() {
         <ul className="mt-6 space-y-3 text-black leading-relaxed">
           <li><strong>Email (Sales):</strong> contact@aurexatech.com</li>
           <li><strong>Email (Support):</strong> support@aurexatech.com</li>
-          <li><strong>Phone ({region}):</strong> {r.phone}</li>
+          <li><strong>Phone:</strong> {r.phone}, +91 77000 06639</li>
           <li><strong>Office:</strong> {r.address}</li>
           <li><strong>Hours:</strong> {r.hours}</li>
-          <li><strong>Compliance focus:</strong> {r.compliance}</li>
         </ul>
       </div>
       <form onSubmit={submit} className="rounded-2xl border border-slate-200 bg-white p-8 grid gap-4">

@@ -114,6 +114,9 @@ export default function Hero() {
               <a href={`tel:${r.phone}`} className="inline-flex items-center gap-1.5 hover:text-brand-teal transition-colors font-medium">
                 <Phone size={14} /> {r.phone}
               </a>
+              <a href="tel:+917700006639" className="inline-flex items-center gap-1.5 hover:text-brand-teal transition-colors font-medium">
+                <Phone size={14} /> +91 77000 06639
+              </a>
             </div>
           </motion.div>
         </AnimatePresence>

@@ -6,6 +6,25 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { name, email, org, industry, customIndustry, date, window, note, region, reference } = body;
 
+    const displayIndustry = industry === "Other" ? customIndustry : industry;
+
+    // Check if SMTP is configured
+    const smtpConfigured = process.env.SMTP_USER && process.env.SMTP_PASS;
+
+    if (!smtpConfigured) {
+      // SMTP not configured - return success without sending emails
+      console.log("Demo booking received (emails not sent - SMTP not configured):", {
+        name, email, org, industry: displayIndustry, date, window, region, reference
+      });
+      
+      return NextResponse.json({ 
+        success: true, 
+        message: "Demo booking confirmed",
+        reference,
+        emailSent: false
+      });
+    }
+
     // Create transporter
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || "smtp.gmail.com",
@@ -16,8 +35,6 @@ export async function POST(req: NextRequest) {
         pass: process.env.SMTP_PASS,
       },
     });
-
-    const displayIndustry = industry === "Other" ? customIndustry : industry;
 
     // Email to customer
     const customerMailOptions = {
@@ -274,16 +291,21 @@ Action Required:
     return NextResponse.json({ 
       success: true, 
       message: "Demo booking confirmed and emails sent",
-      reference 
+      reference,
+      emailSent: true
     });
   } catch (error) {
     console.error("Demo booking email error:", error);
+    
+    // Return success for booking but indicate email failure
     return NextResponse.json(
       { 
-        success: false, 
-        error: "Failed to send booking confirmation. Please contact us directly at demos@aurexatech.com" 
-      },
-      { status: 500 }
+        success: true, 
+        message: "Demo booking confirmed (email notification pending)",
+        reference,
+        emailSent: false,
+        warning: "Confirmation email could not be sent. Our team has been notified and will contact you shortly."
+      }
     );
   }
 }

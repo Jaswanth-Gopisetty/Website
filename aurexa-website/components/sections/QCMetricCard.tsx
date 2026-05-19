@@ -20,10 +20,10 @@ export default function QCMetricCard() {
       <h2 className="h2">Explore Products</h2>
       <p className="text-black mt-2 max-w-2xl leading-relaxed">Our flagship platform for regulated industries — built for compliance, designed for scale.</p>
       <div className="mt-8 max-w-md">
-        <div className="rounded-xl border border-slate-200 bg-white overflow-hidden">
+        <div className="rounded-xl border-2 border-slate-300 bg-gradient-to-br from-brand-blue/10 to-brand-accent/10 overflow-hidden shadow-md hover:shadow-xl transition-all">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="w-full p-5 text-left hover:bg-slate-50 transition-colors"
+            className="w-full p-5 text-left hover:bg-white/40 transition-colors"
           >
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">

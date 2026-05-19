@@ -36,6 +36,7 @@ export default function BookDemoPage() {
   const [data, setData] = useState<FormData>(EMPTY);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [warning, setWarning] = useState("");
   const [availability, setAvailability] = useState<Record<string, { available: number; total: number }>>({});
   const [dynamicWindows, setDynamicWindows] = useState<string[]>([]);
   const [checkingAvailability, setCheckingAvailability] = useState(false);
@@ -80,6 +81,7 @@ export default function BookDemoPage() {
   const handleBooking = async () => {
     setLoading(true);
     setError("");
+    setWarning("");
     
     try {
       const response = await fetch("/api/book-demo", {
@@ -101,8 +103,13 @@ export default function BookDemoPage() {
 
       const result = await response.json();
 
-      if (!response.ok || !result.success) {
-        throw new Error(result.error || "Failed to send booking confirmation");
+      if (!result.success) {
+        throw new Error(result.error || "Failed to complete booking");
+      }
+
+      // Store warning if email wasn't sent
+      if (result.warning) {
+        setWarning(result.warning);
       }
 
       setStep(3);
@@ -330,9 +337,22 @@ export default function BookDemoPage() {
               <CheckCircle2 size={32} className="text-emerald-600" />
             </div>
             <h2 className="mt-5 text-2xl font-bold text-black">You&apos;re booked, {data.name.split(" ")[0] || "there"}!</h2>
-            <p className="mt-3 text-black">
-              A calendar invite and demo prep questionnaire have been sent to <strong>{data.email}</strong>.
-            </p>
+            
+            {warning ? (
+              <div className="mt-4 mx-auto max-w-md">
+                <p className="text-black mb-2">
+                  Your booking has been confirmed with reference <strong>{ref}</strong>.
+                </p>
+                <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
+                  <p className="font-medium">Note: {warning}</p>
+                  <p className="mt-1">Please save your booking reference and contact us at <a href="mailto:demos@aurexatech.com" className="underline">demos@aurexatech.com</a> if you don&apos;t hear from us within 1 business day.</p>
+                </div>
+              </div>
+            ) : (
+              <p className="mt-3 text-black">
+                A calendar invite and demo prep questionnaire have been sent to <strong>{data.email}</strong>.
+              </p>
+            )}
 
             <div className="mt-6 rounded-xl border border-slate-200 bg-brand-surface p-5 text-left space-y-2 text-sm text-black">
               <Row label="Organization"  value={data.org} />

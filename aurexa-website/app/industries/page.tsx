@@ -7,51 +7,61 @@ const INDUSTRIES = [
     title: "Life Sciences",
     summary: "Supporting pharmaceutical, biotech and clinical research organisations with validated, GxP-compliant digital systems.",
     detail: "Aurexa delivers GxP-aligned platforms for drug development, clinical trials, laboratory management and quality operations. Our solutions meet FDA 21 CFR Part 11, EU Annex 11 and ICH guidelines — providing audit trails, electronic signatures and inspection-ready evidence packages to ensure regulatory confidence throughout the product lifecycle.",
+    gradient: "bg-gradient-to-br from-blue-50 to-blue-100/50",
   },
   {
     title: "Pharmaceuticals",
     summary: "Complete quality and compliance management for pharmaceutical manufacturing and distribution.",
     detail: "From batch record management to deviation tracking and regulatory submissions, Aurexa helps pharmaceutical organizations maintain strict GMP compliance. Our solutions support the entire product lifecycle with validated workflows, electronic signatures, and audit-ready documentation.",
+    gradient: "bg-gradient-to-br from-purple-50 to-purple-100/50",
   },
   {
     title: "Biotechnology",
     summary: "Digital platforms for biotech R&D, clinical trials, and regulatory compliance.",
     detail: "Aurexa supports biotechnology organizations with systems for research data management, protocol deviations, sample tracking, and regulatory documentation. Our platforms ensure data integrity, traceability, and compliance throughout the development lifecycle.",
+    gradient: "bg-gradient-to-br from-teal-50 to-teal-100/50",
   },
   {
     title: "Medical Devices",
     summary: "Quality management and regulatory compliance solutions for medical device manufacturers.",
     detail: "Aurexa delivers ISO 13485-aligned platforms for design controls, risk management, CAPA, complaint handling, and post-market surveillance. Our solutions help medical device companies maintain regulatory compliance across FDA, MDR, and global quality standards.",
+    gradient: "bg-gradient-to-br from-emerald-50 to-emerald-100/50",
   },
   {
     title: "Healthcare",
     summary: "Enterprise quality and operational management systems for healthcare providers.",
     detail: "From patient safety incident reporting to quality improvement programs and accreditation readiness, Aurexa helps healthcare organizations maintain operational excellence. Our solutions support HIPAA compliance, joint commission standards, and continuous quality monitoring.",
+    gradient: "bg-gradient-to-br from-rose-50 to-rose-100/50",
   },
   {
     title: "Manufacturing",
     summary: "Quality and operational management for regulated manufacturing environments.",
     detail: "Aurexa supports manufacturing organizations with digital systems for production quality control, equipment validation, supplier management, and continuous improvement. Our platforms enable real-time visibility, traceability, and compliance across manufacturing operations.",
+    gradient: "bg-gradient-to-br from-orange-50 to-orange-100/50",
   },
   {
     title: "Clinical Research",
     summary: "Clinical trial management and regulatory compliance platforms for research organizations.",
     detail: "Aurexa delivers systems for protocol management, investigator site oversight, adverse event reporting, and regulatory submissions. Our platforms support ICH-GCP compliance, 21 CFR Part 11, and EU CTR requirements for clinical trial sponsors and CROs.",
+    gradient: "bg-gradient-to-br from-indigo-50 to-indigo-100/50",
   },
   {
     title: "Marine",
     summary: "Digital quality and compliance management for marine operations, ship management and maritime services.",
     detail: "From vessel maintenance records to crew certification and HSE compliance, Aurexa helps marine organisations digitise and streamline critical processes. Our configurable workflows support ISM Code compliance, flag state requirements and class society audits — delivering traceability and operational control across fleets.",
+    gradient: "bg-gradient-to-br from-cyan-50 to-cyan-100/50",
   },
   {
     title: "Mining",
     summary: "Operational and quality management solutions for mining, extraction and mineral processing.",
     detail: "Aurexa supports mining operations with digital systems for safety management, equipment maintenance, environmental compliance and audit readiness. Our platforms enable automated incident reporting, corrective action workflows and real-time KPI tracking, helping organisations meet ISO 45001, ISO 14001 and local regulatory requirements.",
+    gradient: "bg-gradient-to-br from-amber-50 to-amber-100/50",
   },
   {
     title: "Regulatory & Compliance-driven Enterprises",
     summary: "Adaptable compliance and quality platforms for any regulated or compliance-driven sector.",
     detail: "Beyond our core verticals, Aurexa's configurable architecture supports food & beverage, energy, transportation, and other regulated industries. Our domain-agnostic approach means processes, terminology and approval matrices can be tailored to match any regulatory framework — enabling rapid deployment and long-term scalability.",
+    gradient: "bg-gradient-to-br from-violet-50 to-violet-100/50",
   },
 ];
 
@@ -73,11 +83,11 @@ export default function IndustriesPage() {
         {INDUSTRIES.map((ind, i) => (
           <div 
             key={ind.title} 
-            className="rounded-xl border-2 border-slate-300 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            className={`rounded-xl border-2 border-slate-300 overflow-hidden shadow-sm hover:shadow-lg transition-all ${ind.gradient}`}
           >
             <button
               onClick={() => setOpen(open === i ? null : i)}
-              className="w-full p-6 text-left hover:bg-slate-50 transition-colors"
+              className="w-full p-6 text-left hover:bg-white/40 transition-colors"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
