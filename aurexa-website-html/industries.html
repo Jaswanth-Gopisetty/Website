@@ -2,363 +2,474 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
-  <title>Industries We Serve — Aurexa Technologies</title>
-  <meta name="description" content="Aurexa serves regulated industries with specialized digital platforms: Pharma, Medical Devices, Biotech, Chemicals, Food & Beverage, Electronics, and more.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industries - Aurexa Technologies</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .industries-hero {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: linear-gradient(to right, rgba(10, 42, 102, 0.05), rgba(20, 184, 166, 0.05));
+      border-left: 4px solid var(--color-brand-blue);
+      border-radius: 0.5rem;
+    }
+    .industries-hero-text {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-slate-900);
+      line-height: 1.75;
+    }
+    .industries-intro {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--color-slate-800);
+    }
+    .industries-grid {
+      margin-top: 3rem;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .industries-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .industries-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .industry-card-wrapper {
+      height: 320px;
+      perspective: 1000px;
+    }
+    .industry-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s;
+      transform-style: preserve-3d;
+    }
+    .industry-card-wrapper:hover .industry-card {
+      transform: rotateY(180deg);
+    }
+    .industry-card-front,
+    .industry-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 0.75rem;
+      border: 2px solid var(--color-slate-300);
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .industry-card-back {
+      transform: rotateY(180deg);
+    }
+    .industry-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    .industry-overlay {
+      position: absolute;
+      inset: 0;
+      opacity: 0.8;
+    }
+    .industry-overlay-blue { background: linear-gradient(to bottom right, rgba(219, 234, 254, 1), rgba(191, 219, 254, 0.5)); }
+    .industry-overlay-purple { background: linear-gradient(to bottom right, rgba(243, 232, 255, 1), rgba(233, 213, 255, 0.5)); }
+    .industry-overlay-teal { background: linear-gradient(to bottom right, rgba(204, 251, 241, 1), rgba(153, 246, 228, 0.5)); }
+    .industry-overlay-emerald { background: linear-gradient(to bottom right, rgba(209, 250, 229, 1), rgba(167, 243, 208, 0.5)); }
+    .industry-overlay-rose { background: linear-gradient(to bottom right, rgba(255, 228, 230, 1), rgba(254, 205, 211, 0.5)); }
+    .industry-overlay-orange { background: linear-gradient(to bottom right, rgba(254, 243, 199, 1), rgba(253, 230, 138, 0.5)); }
+    .industry-overlay-indigo { background: linear-gradient(to bottom right, rgba(224, 231, 255, 1), rgba(199, 210, 254, 0.5)); }
+    .industry-overlay-cyan { background: linear-gradient(to bottom right, rgba(207, 250, 254, 1), rgba(165, 243, 252, 0.5)); }
+    .industry-overlay-amber { background: linear-gradient(to bottom right, rgba(254, 243, 199, 1), rgba(252, 211, 77, 0.5)); }
+    .industry-overlay-violet { background: linear-gradient(to bottom right, rgba(237, 233, 254, 1), rgba(221, 214, 254, 0.5)); }
+    .industry-front-content {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .industry-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-slate-900);
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .industry-back {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .industry-back-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-slate-900);
+      margin-bottom: 0.75rem;
+    }
+    .industry-back-summary {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--color-slate-700);
+      margin-bottom: 0.75rem;
+    }
+    .industry-back-detail {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--color-slate-800);
+    }
+    .why-choose-section {
+      margin-top: 5rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(to bottom right, rgba(10, 42, 102, 0.05), rgba(20, 184, 166, 0.05));
+      border: 2px solid rgba(10, 42, 102, 0.2);
+      padding: 2rem;
+    }
+    .why-choose-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-brand-blue-dark);
+      margin-bottom: 1.5rem;
+    }
+    .why-choose-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 2rem;
+      }
+    }
+    .why-choose-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .check-icon {
+      color: var(--color-brand-teal);
+      margin-top: 0.25rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .why-choose-text {
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--color-slate-800);
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
-  <header>
-    <div class="header-container">
-      <a href="index.html" class="logo-link" aria-label="Aurexa Technologies — Home">
-        <img src="aurexa-logo.png" alt="Aurexa Technologies" class="logo-img">
+  <header id="header" class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo-link" aria-label="Aurexa Technologies - Home">
+        <img src="aurexa-logo.png" alt="Aurexa Technologies" class="logo">
       </a>
-      
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="industries.html">Industries</a>
-        <a href="careers.html">Careers</a>
-        <a href="contact.html">Contact</a>
+      <nav class="nav-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="industries.html" class="nav-link">Industries</a>
+        <a href="careers.html" class="nav-link">Careers</a>
+        <a href="contact.html" class="nav-link">Contact</a>
       </nav>
-      
       <div class="header-actions">
         <a href="book-demo.html" class="btn btn-primary">Book a Demo</a>
       </div>
-      
-      <button class="menu-btn" aria-label="Menu">
-        <svg width="24" height="24"><use href="#icon-menu"></use></svg>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <svg class="menu-icon" id="menuIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg class="close-icon" id="closeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
       </button>
     </div>
-    
-    <div class="mobile-menu">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="industries.html">Industries</a>
-      <a href="careers.html">Careers</a>
-      <a href="contact.html">Contact</a>
-      <a href="book-demo.html" class="btn btn-primary">Book a Demo</a>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="about.html" class="mobile-link">About</a>
+      <a href="industries.html" class="mobile-link">Industries</a>
+      <a href="careers.html" class="mobile-link">Careers</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="book-demo.html" class="btn btn-primary btn-mobile">Book a Demo</a>
     </div>
   </header>
 
-  <!-- Sub Header -->
-  <div class="sub-header">
-    <div class="sub-header-content">
-      <h2>We take the opportunity to analyse and develop innovative solutions for regulated industries</h2>
+  <!-- Secondary Banner -->
+  <div class="secondary-banner">
+    <div class="banner-content">
+      <h2 class="banner-text">We take the opportunity to analyse and develop innovative solutions for regulated industries</h2>
     </div>
   </div>
 
   <!-- Main Content -->
-  <main>
-    <!-- Industries Section -->
+  <main class="main-content">
     <section class="section">
-      <h1 class="h1">Industries we serve</h1>
-      <div class="info-box">
-        <p>At Aurexa Technologies we specialize in serving highly regulated industries where quality, compliance, and operational control are not optional — they are fundamental. Our platforms are designed to meet the stringent regulatory demands of these industries, helping organizations improve efficiency, maintain continuous compliance, and scale with confidence.</p>
-      </div>
+      <h1 class="section-title">Industries</h1>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
-        <!-- Pharmaceuticals -->
-        <div class="flip-card-container">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <div class="flip-card-bg" style="background-image: url('https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
-              <div class="flip-card-overlay gradient-blue"></div>
-              <div class="flip-card-content">
-                <div class="flip-card-icon" style="background: rgba(10, 42, 102, 0.2);">
-                  <svg width="28" height="28" style="color: #0A2A66;"><use href="#icon-activity"></use></svg>
-                </div>
-                <h3 class="flip-card-title">Pharmaceuticals</h3>
+      <div class="industries-hero">
+        <p class="industries-hero-text">We support organizations across highly regulated industries including Life Sciences, Pharmaceuticals, Biotechnology, Medical Devices, Healthcare, Manufacturing, Clinical Research, Marine, Mining, and other regulatory & compliance-driven enterprises.</p>
+      </div>
+
+      <p class="industries-intro">Aurexa delivers regulated-grade digital platforms across a range of industries, combining deep domain expertise with compliance-first technology.</p>
+
+      <div class="industries-grid">
+        <!-- Life Sciences -->
+        <div class="industry-card-wrapper">
+          <div class="industry-card">
+            <div class="industry-card-front">
+              <div class="industry-card-bg" style="background-image: url('https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
+              <div class="industry-overlay industry-overlay-blue"></div>
+              <div class="industry-front-content">
+                <h3 class="industry-title">Life Sciences</h3>
               </div>
             </div>
-            <div class="flip-card-back gradient-blue">
-              <div class="flip-card-back-header">
-                <div class="flip-card-back-icon" style="background: rgba(10, 42, 102, 0.2);">
-                  <svg width="20" height="20" style="color: #0A2A66;"><use href="#icon-activity"></use></svg>
-                </div>
-                <h3 class="flip-card-back-title">Pharmaceuticals</h3>
-              </div>
-              <div class="flip-card-back-content">
-                <p>Aurexa supports pharmaceutical companies with GxP-aligned platforms for Quality, Document Control, Training, CAPA, Change Control, Deviations, and Batch Management. Ensure compliance with FDA 21 CFR Part 11, ICH, and global regulatory standards while improving operational efficiency and reducing inspection risk.</p>
+            <div class="industry-card-back industry-overlay-blue">
+              <h3 class="industry-back-title">Life Sciences</h3>
+              <p class="industry-back-summary">Supporting pharmaceutical, biotech and clinical research organisations with validated, GxP-compliant digital systems.</p>
+              <div class="industry-back-detail">
+                <p>Aurexa delivers GxP-aligned platforms for drug development, clinical trials, laboratory management and quality operations. Our solutions meet FDA 21 CFR Part 11, EU Annex 11 and ICH guidelines — providing audit trails, electronic signatures and inspection-ready evidence packages to ensure regulatory confidence throughout the product lifecycle.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Medical Devices -->
-        <div class="flip-card-container">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <div class="flip-card-bg" style="background-image: url('https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
-              <div class="flip-card-overlay gradient-teal"></div>
-              <div class="flip-card-content">
-                <div class="flip-card-icon" style="background: rgba(20, 184, 166, 0.2);">
-                  <svg width="28" height="28" style="color: #0F766E;"><use href="#icon-target"></use></svg>
-                </div>
-                <h3 class="flip-card-title">Medical Devices</h3>
+        <!-- Pharmaceuticals -->
+        <div class="industry-card-wrapper">
+          <div class="industry-card">
+            <div class="industry-card-front">
+              <div class="industry-card-bg" style="background-image: url('https://images.pexels.com/photos/3683041/pexels-photo-3683041.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
+              <div class="industry-overlay industry-overlay-purple"></div>
+              <div class="industry-front-content">
+                <h3 class="industry-title">Pharmaceuticals</h3>
               </div>
             </div>
-            <div class="flip-card-back gradient-teal">
-              <div class="flip-card-back-header">
-                <div class="flip-card-back-icon" style="background: rgba(20, 184, 166, 0.2);">
-                  <svg width="20" height="20" style="color: #0F766E;"><use href="#icon-target"></use></svg>
-                </div>
-                <h3 class="flip-card-back-title">Medical Devices</h3>
-              </div>
-              <div class="flip-card-back-content">
-                <p>Aurexa enables Medical Device manufacturers to manage Design Controls, Risk Management, Supplier Management, and Post-Market Surveillance in a unified system. Ensure compliance with ISO 13485, FDA QSR, and MDR while accelerating product development and maintaining traceability across the device lifecycle.</p>
+            <div class="industry-card-back industry-overlay-purple">
+              <h3 class="industry-back-title">Pharmaceuticals</h3>
+              <p class="industry-back-summary">Complete quality and compliance management for pharmaceutical manufacturing and distribution.</p>
+              <div class="industry-back-detail">
+                <p>From batch record management to deviation tracking and regulatory submissions, Aurexa helps pharmaceutical organizations maintain strict GMP compliance. Our solutions support the entire product lifecycle with validated workflows, electronic signatures, and audit-ready documentation.</p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Biotechnology -->
-        <div class="flip-card-container">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <div class="flip-card-bg" style="background-image: url('https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
-              <div class="flip-card-overlay gradient-accent"></div>
-              <div class="flip-card-content">
-                <div class="flip-card-icon" style="background: rgba(124, 58, 237, 0.2);">
-                  <svg width="28" height="28" style="color: #7C3AED;"><use href="#icon-layers"></use></svg>
-                </div>
-                <h3 class="flip-card-title">Biotechnology</h3>
+        <div class="industry-card-wrapper">
+          <div class="industry-card">
+            <div class="industry-card-front">
+              <div class="industry-card-bg" style="background-image: url('https://images.pexels.com/photos/2280549/pexels-photo-2280549.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
+              <div class="industry-overlay industry-overlay-teal"></div>
+              <div class="industry-front-content">
+                <h3 class="industry-title">Biotechnology</h3>
               </div>
             </div>
-            <div class="flip-card-back gradient-accent">
-              <div class="flip-card-back-header">
-                <div class="flip-card-back-icon" style="background: rgba(124, 58, 237, 0.2);">
-                  <svg width="20" height="20" style="color: #7C3AED;"><use href="#icon-layers"></use></svg>
-                </div>
-                <h3 class="flip-card-back-title">Biotechnology</h3>
-              </div>
-              <div class="flip-card-back-content">
-                <p>Aurexa helps Biotech companies streamline R&D, lab operations, and regulatory documentation with platforms built for complex workflows, cross-functional collaboration, and compliance traceability. From discovery through commercialization, our solutions adapt to the pace and rigor of biotech innovation.</p>
+            <div class="industry-card-back industry-overlay-teal">
+              <h3 class="industry-back-title">Biotechnology</h3>
+              <p class="industry-back-summary">Digital platforms for biotech R&D, clinical trials, and regulatory compliance.</p>
+              <div class="industry-back-detail">
+                <p>Aurexa supports biotechnology organizations with systems for research data management, protocol deviations, sample tracking, and regulatory documentation. Our platforms ensure data integrity, traceability, and compliance throughout the development lifecycle.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Chemicals -->
-        <div class="flip-card-container">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <div class="flip-card-bg" style="background-image: url('https://images.pexels.com/photos/8327825/pexels-photo-8327825.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
-              <div class="flip-card-overlay gradient-blue"></div>
-              <div class="flip-card-content">
-                <div class="flip-card-icon" style="background: rgba(10, 42, 102, 0.2);">
-                  <svg width="28" height="28" style="color: #0A2A66;"><use href="#icon-boxes"></use></svg>
-                </div>
-                <h3 class="flip-card-title">Chemicals</h3>
+        <!-- Medical Devices -->
+        <div class="industry-card-wrapper">
+          <div class="industry-card">
+            <div class="industry-card-front">
+              <div class="industry-card-bg" style="background-image: url('https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
+              <div class="industry-overlay industry-overlay-emerald"></div>
+              <div class="industry-front-content">
+                <h3 class="industry-title">Medical Devices</h3>
               </div>
             </div>
-            <div class="flip-card-back gradient-blue">
-              <div class="flip-card-back-header">
-                <div class="flip-card-back-icon" style="background: rgba(10, 42, 102, 0.2);">
-                  <svg width="20" height="20" style="color: #0A2A66;"><use href="#icon-boxes"></use></svg>
-                </div>
-                <h3 class="flip-card-back-title">Chemicals</h3>
-              </div>
-              <div class="flip-card-back-content">
-                <p>Aurexa supports Chemical manufacturers with solutions for SDS Management, Safety Compliance, Environmental Monitoring, and Quality Control. Ensure alignment with REACH, OSHA, and ISO 9001 while managing complex formulations, supplier chains, and production workflows with transparency and control.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Food & Beverage -->
-        <div class="flip-card-container">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <div class="flip-card-bg" style="background-image: url('https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
-              <div class="flip-card-overlay gradient-teal"></div>
-              <div class="flip-card-content">
-                <div class="flip-card-icon" style="background: rgba(20, 184, 166, 0.2);">
-                  <svg width="28" height="28" style="color: #0F766E;"><use href="#icon-clipboard-list"></use></svg>
-                </div>
-                <h3 class="flip-card-title">Food & Beverage</h3>
-              </div>
-            </div>
-            <div class="flip-card-back gradient-teal">
-              <div class="flip-card-back-header">
-                <div class="flip-card-back-icon" style="background: rgba(20, 184, 166, 0.2);">
-                  <svg width="20" height="20" style="color: #0F766E;"><use href="#icon-clipboard-list"></use></svg>
-                </div>
-                <h3 class="flip-card-back-title">Food & Beverage</h3>
-              </div>
-              <div class="flip-card-back-content">
-                <p>Aurexa enables Food & Beverage companies to manage HACCP Plans, Supplier Audits, Allergen Control, and Traceability with digital precision. Ensure compliance with FSMA, GFSI, and regional food safety regulations while improving consistency, reducing recalls, and maintaining consumer trust.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Electronics & Semiconductors -->
-        <div class="flip-card-container">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <div class="flip-card-bg" style="background-image: url('https://images.pexels.com/photos/163100/circuit-board-computer-electronics-board-163100.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
-              <div class="flip-card-overlay gradient-accent"></div>
-              <div class="flip-card-content">
-                <div class="flip-card-icon" style="background: rgba(124, 58, 237, 0.2);">
-                  <svg width="28" height="28" style="color: #7C3AED;"><use href="#icon-server-cog"></use></svg>
-                </div>
-                <h3 class="flip-card-title">Electronics & Semiconductors</h3>
-              </div>
-            </div>
-            <div class="flip-card-back gradient-accent">
-              <div class="flip-card-back-header">
-                <div class="flip-card-back-icon" style="background: rgba(124, 58, 237, 0.2);">
-                  <svg width="20" height="20" style="color: #7C3AED;"><use href="#icon-server-cog"></use></svg>
-                </div>
-                <h3 class="flip-card-back-title">Electronics & Semiconductors</h3>
-              </div>
-              <div class="flip-card-back-content">
-                <p>Aurexa supports Electronics & Semiconductor manufacturers with solutions for Statistical Process Control (SPC), Cleanroom Monitoring, Failure Analysis, and Quality Audits. Maintain compliance with IATF 16949, ISO 9001, and industry standards while optimizing yield and product reliability.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cosmetics -->
-        <div class="flip-card-container">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <div class="flip-card-bg" style="background-image: url('https://images.pexels.com/photos/2113855/pexels-photo-2113855.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
-              <div class="flip-card-overlay gradient-blue"></div>
-              <div class="flip-card-content">
-                <div class="flip-card-icon" style="background: rgba(10, 42, 102, 0.2);">
-                  <svg width="28" height="28" style="color: #0A2A66;"><use href="#icon-sparkles"></use></svg>
-                </div>
-                <h3 class="flip-card-title">Cosmetics</h3>
-              </div>
-            </div>
-            <div class="flip-card-back gradient-blue">
-              <div class="flip-card-back-header">
-                <div class="flip-card-back-icon" style="background: rgba(10, 42, 102, 0.2);">
-                  <svg width="20" height="20" style="color: #0A2A66;"><use href="#icon-sparkles"></use></svg>
-                </div>
-                <h3 class="flip-card-back-title">Cosmetics</h3>
-              </div>
-              <div class="flip-card-back-content">
-                <p>Aurexa helps Cosmetics companies manage Formulation Records, Stability Testing, Safety Assessments, and Global Regulatory Documentation. Ensure compliance with FDA OTC regulations, EU Cosmetics Regulation, and international requirements while accelerating time-to-market and maintaining brand reputation.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Aerospace -->
-        <div class="flip-card-container">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <div class="flip-card-bg" style="background-image: url('https://images.pexels.com/photos/929382/pexels-photo-929382.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
-              <div class="flip-card-overlay gradient-teal"></div>
-              <div class="flip-card-content">
-                <div class="flip-card-icon" style="background: rgba(20, 184, 166, 0.2);">
-                  <svg width="28" height="28" style="color: #0F766E;"><use href="#icon-target"></use></svg>
-                </div>
-                <h3 class="flip-card-title">Aerospace</h3>
-              </div>
-            </div>
-            <div class="flip-card-back gradient-teal">
-              <div class="flip-card-back-header">
-                <div class="flip-card-back-icon" style="background: rgba(20, 184, 166, 0.2);">
-                  <svg width="20" height="20" style="color: #0F766E;"><use href="#icon-target"></use></svg>
-                </div>
-                <h3 class="flip-card-back-title">Aerospace</h3>
-              </div>
-              <div class="flip-card-back-content">
-                <p>Aurexa supports Aerospace organizations with platforms for Configuration Management, Supplier Qualification, Non-Conformance Tracking, and Airworthiness Documentation. Ensure compliance with AS9100, FAA, and EASA while managing complex supply chains, change approvals, and safety-critical processes.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cannabis -->
-        <div class="flip-card-container">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <div class="flip-card-bg" style="background-image: url('https://images.pexels.com/photos/7665566/pexels-photo-7665566.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
-              <div class="flip-card-overlay gradient-accent"></div>
-              <div class="flip-card-content">
-                <div class="flip-card-icon" style="background: rgba(124, 58, 237, 0.2);">
-                  <svg width="28" height="28" style="color: #7C3AED;"><use href="#icon-clipboard-list"></use></svg>
-                </div>
-                <h3 class="flip-card-title">Cannabis</h3>
-              </div>
-            </div>
-            <div class="flip-card-back gradient-accent">
-              <div class="flip-card-back-header">
-                <div class="flip-card-back-icon" style="background: rgba(124, 58, 237, 0.2);">
-                  <svg width="20" height="20" style="color: #7C3AED;"><use href="#icon-clipboard-list"></use></svg>
-                </div>
-                <h3 class="flip-card-back-title">Cannabis</h3>
-              </div>
-              <div class="flip-card-back-content">
-                <p>Aurexa enables Cannabis companies to navigate evolving state and federal regulations with platforms for Seed-to-Sale Tracking, Lab Testing, Packaging & Labeling, and Compliance Reporting. Ensure alignment with state cannabis regulations, Good Manufacturing Practices (GMP), and emerging federal standards.</p>
+            <div class="industry-card-back industry-overlay-emerald">
+              <h3 class="industry-back-title">Medical Devices</h3>
+              <p class="industry-back-summary">Quality management and regulatory compliance solutions for medical device manufacturers.</p>
+              <div class="industry-back-detail">
+                <p>Aurexa delivers ISO 13485-aligned platforms for design controls, risk management, CAPA, complaint handling, and post-market surveillance. Our solutions help medical device companies maintain regulatory compliance across FDA, MDR, and global quality standards.</p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Healthcare -->
-        <div class="flip-card-container">
-          <div class="flip-card">
-            <div class="flip-card-front">
-              <div class="flip-card-bg" style="background-image: url('https://images.pexels.com/photos/3825586/pexels-photo-3825586.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
-              <div class="flip-card-overlay gradient-blue"></div>
-              <div class="flip-card-content">
-                <div class="flip-card-icon" style="background: rgba(10, 42, 102, 0.2);">
-                  <svg width="28" height="28" style="color: #0A2A66;"><use href="#icon-activity"></use></svg>
-                </div>
-                <h3 class="flip-card-title">Healthcare</h3>
+        <div class="industry-card-wrapper">
+          <div class="industry-card">
+            <div class="industry-card-front">
+              <div class="industry-card-bg" style="background-image: url('https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
+              <div class="industry-overlay industry-overlay-rose"></div>
+              <div class="industry-front-content">
+                <h3 class="industry-title">Healthcare</h3>
               </div>
             </div>
-            <div class="flip-card-back gradient-blue">
-              <div class="flip-card-back-header">
-                <div class="flip-card-back-icon" style="background: rgba(10, 42, 102, 0.2);">
-                  <svg width="20" height="20" style="color: #0A2A66;"><use href="#icon-activity"></use></svg>
-                </div>
-                <h3 class="flip-card-back-title">Healthcare</h3>
+            <div class="industry-card-back industry-overlay-rose">
+              <h3 class="industry-back-title">Healthcare</h3>
+              <p class="industry-back-summary">Enterprise quality and operational management systems for healthcare providers.</p>
+              <div class="industry-back-detail">
+                <p>From patient safety incident reporting to quality improvement programs and accreditation readiness, Aurexa helps healthcare organizations maintain operational excellence. Our solutions support HIPAA compliance, joint commission standards, and continuous quality monitoring.</p>
               </div>
-              <div class="flip-card-back-content">
-                <p>Aurexa supports Healthcare providers with solutions for Clinical Quality, Credentialing, Adverse Event Tracking, and Regulatory Documentation. Ensure compliance with HIPAA, Joint Commission, CMS, and accreditation standards while improving patient safety, operational efficiency, and audit readiness.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manufacturing -->
+        <div class="industry-card-wrapper">
+          <div class="industry-card">
+            <div class="industry-card-front">
+              <div class="industry-card-bg" style="background-image: url('https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
+              <div class="industry-overlay industry-overlay-orange"></div>
+              <div class="industry-front-content">
+                <h3 class="industry-title">Manufacturing</h3>
+              </div>
+            </div>
+            <div class="industry-card-back industry-overlay-orange">
+              <h3 class="industry-back-title">Manufacturing</h3>
+              <p class="industry-back-summary">Quality and operational management for regulated manufacturing environments.</p>
+              <div class="industry-back-detail">
+                <p>Aurexa supports manufacturing organizations with digital systems for production quality control, equipment validation, supplier management, and continuous improvement. Our platforms enable real-time visibility, traceability, and compliance across manufacturing operations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clinical Research -->
+        <div class="industry-card-wrapper">
+          <div class="industry-card">
+            <div class="industry-card-front">
+              <div class="industry-card-bg" style="background-image: url('https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
+              <div class="industry-overlay industry-overlay-indigo"></div>
+              <div class="industry-front-content">
+                <h3 class="industry-title">Clinical Research</h3>
+              </div>
+            </div>
+            <div class="industry-card-back industry-overlay-indigo">
+              <h3 class="industry-back-title">Clinical Research</h3>
+              <p class="industry-back-summary">Clinical trial management and regulatory compliance platforms for research organizations.</p>
+              <div class="industry-back-detail">
+                <p>Aurexa delivers systems for protocol management, investigator site oversight, adverse event reporting, and regulatory submissions. Our platforms support ICH-GCP compliance, 21 CFR Part 11, and EU CTR requirements for clinical trial sponsors and CROs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marine -->
+        <div class="industry-card-wrapper">
+          <div class="industry-card">
+            <div class="industry-card-front">
+              <div class="industry-card-bg" style="background-image: url('https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
+              <div class="industry-overlay industry-overlay-cyan"></div>
+              <div class="industry-front-content">
+                <h3 class="industry-title">Marine</h3>
+              </div>
+            </div>
+            <div class="industry-card-back industry-overlay-cyan">
+              <h3 class="industry-back-title">Marine</h3>
+              <p class="industry-back-summary">Digital quality and compliance management for marine operations, ship management and maritime services.</p>
+              <div class="industry-back-detail">
+                <p>From vessel maintenance records to crew certification and HSE compliance, Aurexa helps marine organisations digitise and streamline critical processes. Our configurable workflows support ISM Code compliance, flag state requirements and class society audits — delivering traceability and operational control across fleets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mining -->
+        <div class="industry-card-wrapper">
+          <div class="industry-card">
+            <div class="industry-card-front">
+              <div class="industry-card-bg" style="background-image: url('https://images.pexels.com/photos/1267324/pexels-photo-1267324.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
+              <div class="industry-overlay industry-overlay-amber"></div>
+              <div class="industry-front-content">
+                <h3 class="industry-title">Mining</h3>
+              </div>
+            </div>
+            <div class="industry-card-back industry-overlay-amber">
+              <h3 class="industry-back-title">Mining</h3>
+              <p class="industry-back-summary">Operational and quality management solutions for mining, extraction and mineral processing.</p>
+              <div class="industry-back-detail">
+                <p>Aurexa supports mining operations with digital systems for safety management, equipment maintenance, environmental compliance and audit readiness. Our platforms enable automated incident reporting, corrective action workflows and real-time KPI tracking, helping organisations meet ISO 45001, ISO 14001 and local regulatory requirements.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regulatory & Compliance-driven Enterprises -->
+        <div class="industry-card-wrapper">
+          <div class="industry-card">
+            <div class="industry-card-front">
+              <div class="industry-card-bg" style="background-image: url('https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop');"></div>
+              <div class="industry-overlay industry-overlay-violet"></div>
+              <div class="industry-front-content">
+                <h3 class="industry-title">Regulatory & Compliance-driven Enterprises</h3>
+              </div>
+            </div>
+            <div class="industry-card-back industry-overlay-violet">
+              <h3 class="industry-back-title">Regulatory & Compliance-driven Enterprises</h3>
+              <p class="industry-back-summary">Adaptable compliance and quality platforms for any regulated or compliance-driven sector.</p>
+              <div class="industry-back-detail">
+                <p>Beyond our core verticals, Aurexa's configurable architecture supports food & beverage, energy, transportation, and other regulated industries. Our domain-agnostic approach means processes, terminology and approval matrices can be tailored to match any regulatory framework — enabling rapid deployment and long-term scalability.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Why Choose Section -->
-    <section class="bg-surface">
-      <div class="section">
-        <h2 class="h2">Why regulated industries choose Aurexa</h2>
-        <p style="color: black; margin-top: 0.5rem; line-height: 1.75;">We understand the operational complexity, regulatory scrutiny, and business pressures that define these industries.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 mt-8">
-          <div class="card gradient-blue">
-            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem;">Regulatory expertise</h3>
-            <p style="color: black; line-height: 1.75; font-size: 0.875rem;">Our platforms are designed with regulatory compliance built-in, not bolted-on. We help organizations meet FDA, EMA, ISO, HACCP, and global standards.</p>
+      <!-- Why Choose Aurexa -->
+      <div class="why-choose-section">
+        <h2 class="why-choose-title">Why Choose Aurexa Technologies</h2>
+        <div class="why-choose-grid">
+          <div class="why-choose-item">
+            <span class="check-icon">✓</span>
+            <span class="why-choose-text">Compliance-focused digital solutions</span>
           </div>
-          
-          <div class="card gradient-teal">
-            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem;">Proven scalability</h3>
-            <p style="color: black; line-height: 1.75; font-size: 0.875rem;">Whether you're a startup or a global enterprise, our platforms scale to meet your operational needs without compromising control or compliance.</p>
+          <div class="why-choose-item">
+            <span class="check-icon">✓</span>
+            <span class="why-choose-text">Deep expertise in regulated industries</span>
           </div>
-          
-          <div class="card gradient-accent">
-            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem;">Industry-specific workflows</h3>
-            <p style="color: black; line-height: 1.75; font-size: 0.875rem;">Our solutions are tailored to the unique processes, workflows, and documentation requirements of each industry.</p>
+          <div class="why-choose-item">
+            <span class="check-icon">✓</span>
+            <span class="why-choose-text">Audit-ready systems and workflows</span>
           </div>
-          
-          <div class="card gradient-blue">
-            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem;">Continuous innovation</h3>
-            <p style="color: black; line-height: 1.75; font-size: 0.875rem;">We continuously evolve our platforms based on regulatory changes, industry trends, and customer feedback.</p>
+          <div class="why-choose-item">
+            <span class="check-icon">✓</span>
+            <span class="why-choose-text">Scalable, cloud-based architecture</span>
+          </div>
+          <div class="why-choose-item">
+            <span class="check-icon">✓</span>
+            <span class="why-choose-text">Full regulatory traceability</span>
+          </div>
+          <div class="why-choose-item">
+            <span class="check-icon">✓</span>
+            <span class="why-choose-text">Electronic signatures & audit trails</span>
+          </div>
+          <div class="why-choose-item">
+            <span class="check-icon">✓</span>
+            <span class="why-choose-text">Configurable to your unique workflows</span>
+          </div>
+          <div class="why-choose-item">
+            <span class="check-icon">✓</span>
+            <span class="why-choose-text">Proven track record in GxP environments</span>
           </div>
         </div>
       </div>
@@ -366,16 +477,15 @@
   </main>
 
   <!-- Footer -->
-  <footer>
+  <footer class="footer">
     <div class="footer-content">
-      <div class="footer-section">
-        <img src="aurexa-logo.png" alt="Aurexa Technologies" class="logo-img" style="margin-bottom: 0.75rem;">
-        <p>Where innovation meets compliance, and technology drives growth.</p>
+      <div class="footer-column">
+        <img src="aurexa-logo.png" alt="Aurexa Technologies" class="footer-logo">
+        <p class="footer-tagline">Where innovation meets compliance, and technology drives growth.</p>
       </div>
-      
-      <div class="footer-section">
-        <h4>Company</h4>
-        <ul>
+      <div class="footer-column">
+        <h4 class="footer-heading">Company</h4>
+        <ul class="footer-links">
           <li><a href="about.html">About</a></li>
           <li><a href="industries.html">Industries</a></li>
           <li><a href="careers.html">Careers</a></li>
@@ -385,30 +495,39 @@
           <li><a href="terms.html">Terms</a></li>
         </ul>
       </div>
-      
-      <div class="footer-section">
-        <h4>Follow us</h4>
+      <div class="footer-column">
+        <h4 class="footer-heading">Follow us</h4>
         <div class="social-links">
           <a href="https://linkedin.com/company/aurexatech" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg width="20" height="20"><use href="#icon-linkedin"></use></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
           </a>
           <a href="https://youtube.com/@aurexatech" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg width="20" height="20"><use href="#icon-youtube"></use></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#fff"></polygon>
+            </svg>
           </a>
           <a href="https://x.com/aurexatech" target="_blank" rel="noopener noreferrer" aria-label="X">
-            <svg width="20" height="20"><use href="#icon-twitter"></use></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+            </svg>
           </a>
           <a href="https://facebook.com/aurexatech" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <svg width="20" height="20"><use href="#icon-facebook"></use></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
           </a>
         </div>
-        <p>Follow Aurexa for product updates, regulatory guidance and case studies.</p>
+        <p class="footer-social-text">Follow Aurexa for product updates, regulatory guidance and case studies.</p>
       </div>
     </div>
-    
     <div class="footer-bottom">
       <div class="footer-bottom-content">
-        <span>© <span id="current-year">2026</span> Aurexa Technologies. All rights reserved.</span>
+        <span>© <span id="currentYear"></span> Aurexa Technologies. All rights reserved.</span>
       </div>
     </div>
   </footer>
