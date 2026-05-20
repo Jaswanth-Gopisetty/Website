@@ -26,8 +26,22 @@ const config: Config = {
           "0%,100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-6px)" },
         },
+        kenBurns: {
+          "0%": { 
+            transform: "scale(1) translate(0, 0)",
+          },
+          "50%": { 
+            transform: "scale(1.15) translate(-2%, -2%)",
+          },
+          "100%": { 
+            transform: "scale(1.1) translate(2%, 1%)",
+          },
+        },
       },
-      animation: { floaty: "floaty 6s ease-in-out infinite" },
+      animation: { 
+        floaty: "floaty 6s ease-in-out infinite",
+        "ken-burns": "kenBurns 20s ease-in-out infinite alternate",
+      },
     },
   },
   plugins: [],

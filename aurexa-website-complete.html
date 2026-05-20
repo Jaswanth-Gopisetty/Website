@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurexa Technologies - Enterprise Digital Platforms & Managed Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-blue: #0B5FA5;
+            --brand-blueDark: #063A66;
+            --brand-teal: #2DD4BF;
+            --brand-tealDark: #0F766E;
+            --brand-accent: #7C3AED;
+            --brand-surface: #F1F5F9;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 40;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .header-main {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            height: 56px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--brand-blue);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--brand-blue), var(--brand-teal));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Secondary Banner */
+        .secondary-banner {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            z-index: 30;
+            background: linear-gradient(to right, rgba(11, 95, 165, 0.3), rgba(45, 212, 191, 0.25), rgba(11, 95, 165, 0.3));
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            padding: 0.75rem 2rem;
+            text-align: center;
+            color: #1e293b;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 128px;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            border-radius: 1rem;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem;
+            color: white;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .hero-controls {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hero-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(8px);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .hero-btn:hover {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .hero-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .hero-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .hero-dot.active {
+            background: white;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Flip Cards */
+        .flip-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .flip-card-container {
+            perspective: 1000px;
+            height: 400px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-container:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            border: 2px solid #cbd5e1;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flip-card-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .flip-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .flip-card-content {
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border: 2px solid #cbd5e1;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .accordion-button {
+            width: 100%;
+            padding: 1.5rem;
+            background: white;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .accordion-button:hover {
+            background: rgba(241, 245, 249, 0.5);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--brand-blueDark), var(--brand-blue));
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.875rem;
+        }
+
+        /* Gradients */
+        .gradient-blue { background: linear-gradient(to bottom right, rgba(239, 246, 255, 1), rgba(239, 246, 255, 0.5)); }
+        .gradient-purple { background: linear-gradient(to bottom right, rgba(250, 245, 255, 1), rgba(250, 245, 255, 0.5)); }
+        .gradient-teal { background: linear-gradient(to bottom right, rgba(240, 253, 250, 1), rgba(240, 253, 250, 0.5)); }
+        .gradient-emerald { background: linear-gradient(to bottom right, rgba(236, 253, 245, 1), rgba(236, 253, 245, 0.5)); }
+        .gradient-rose { background: linear-gradient(to bottom right, rgba(255, 241, 242, 1), rgba(255, 241, 242, 0.5)); }
+        .gradient-orange { background: linear-gradient(to bottom right, rgba(255, 247, 237, 1), rgba(255, 247, 237, 0.5)); }
+        .gradient-indigo { background: linear-gradient(to bottom right, rgba(238, 242, 255, 1), rgba(238, 242, 255, 0.5)); }
+        .gradient-cyan { background: linear-gradient(to bottom right, rgba(236, 254, 255, 1), rgba(236, 254, 255, 0.5)); }
+        .gradient-amber { background: linear-gradient(to bottom right, rgba(255, 251, 235, 1), rgba(255, 251, 235, 0.5)); }
+        .gradient-violet { background: linear-gradient(to bottom right, rgba(245, 243, 255, 1), rgba(245, 243, 255, 0.5)); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 1.75rem;
+            }
+
+            .flip-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flip-card-container {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-main">
+            <img src="aurexa-logo.png" alt="Aurexa Technologies" class="logo">
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#industries">Industries</a>
+                <a href="#products">Products</a>
+                <a href="#contact">Contact</a>
+                <button class="cta-button">Book Demo</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Secondary Banner -->
+    <div class="secondary-banner">
+        We take the opportunity to analyse and develop innovative solutions for regulated industries
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="container">
+            <div class="hero" id="hero">
+                <!-- Slide 1 -->
+                <div class="hero-slide active">
+                    <div class="hero-bg" style="background-image: url('https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
+                    <div class="hero-overlay" style="background: linear-gradient(135deg, rgba(11, 95, 165, 0.4), rgba(45, 212, 191, 0.2), rgba(6, 58, 102, 0.6))"></div>
+                    <div class="hero-content">
+                        <h1>Where Innovation Meets Compliance, and Technology Drives Growth.</h1>
+                        <p>Aurexa Technologies delivers enterprise digital platforms and managed services designed to simplify compliance, strengthen operational control, and improve quality outcomes across regulated industries.</p>
+                        <div style="display: flex; gap: 1rem;">
+                            <button class="cta-button">Book Demo</button>
+                            <button class="cta-button" style="background: rgba(255,255,255,0.2);">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="hero-slide">
+                    <div class="hero-bg" style="background-image: url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
+                    <div class="hero-overlay" style="background: linear-gradient(135deg, rgba(45, 212, 191, 0.4), rgba(11, 95, 165, 0.2), rgba(15, 118, 110, 0.6))"></div>
+                    <div class="hero-content">
+                        <h1>Fully Auditable Processes & Real-Time Visibility</h1>
+                        <p>Our solutions help organizations establish fully auditable processes, streamline complex workflows, and gain real-time visibility into critical business operations.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="hero-slide">
+                    <div class="hero-bg" style="background-image: url('https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
+                    <div class="hero-overlay" style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.4), rgba(11, 95, 165, 0.2), rgba(6, 58, 102, 0.6))"></div>
+                    <div class="hero-content">
+                        <h1>Empowering Regulated Industries</h1>
+                        <p>At Aurexa Technologies, we empower regulated industries with intelligent digital platforms and managed services that drive compliance, operational excellence, and business transformation.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="hero-slide">
+                    <div class="hero-bg" style="background-image: url('https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
+                    <div class="hero-overlay" style="background: linear-gradient(135deg, rgba(15, 118, 110, 0.4), rgba(11, 95, 165, 0.2), rgba(6, 58, 102, 0.6))"></div>
+                    <div class="hero-content">
+                        <h1>Scalable, Secure & Compliance-Driven Platforms</h1>
+                        <p>We specialize in delivering scalable, secure, and compliance-driven platforms that help businesses automate workflows, maintain data integrity, and achieve continuous regulatory readiness.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="hero-slide">
+                    <div class="hero-bg" style="background-image: url('https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1200')"></div>
+                    <div class="hero-overlay" style="background: linear-gradient(135deg, rgba(11, 95, 165, 0.4), rgba(124, 58, 237, 0.2), rgba(15, 118, 110, 0.6))"></div>
+                    <div class="hero-content">
+                        <h1>Innovation & Industry Best Practices</h1>
+                        <p>With a strong focus on innovation and industry best practices, Aurexa Technologies enables organizations to modernize legacy processes, reduce operational risk, and accelerate decision-making.</p>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="hero-controls">
+                    <button class="hero-btn" onclick="prevSlide()">‹</button>
+                    <div class="hero-dots" id="heroDots"></div>
+                    <button class="hero-btn" onclick="nextSlide()">›</button>
+                    <button class="hero-btn" id="pauseBtn" onclick="togglePause()">⏸</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section container" id="about">
+            <h2 class="h2">About Aurexa Technologies</h2>
+            <p style="max-width: 900px; margin-bottom: 2rem;">Founded with a vision to transform how regulated organisations manage quality, compliance and operational risk, Aurexa Technologies brings deep domain expertise, technical excellence and a compliance-first mindset to every solution we deliver.</p>
+            
+            <div style="display: grid; gap: 1rem;">
+                <!-- Accordion Item 1 -->
+                <div class="accordion-item gradient-blue">
+                    <button class="accordion-button" onclick="toggleAccordion(0)">
+                        <h3 style="font-size: 1.25rem; font-weight: 600;">Deep domain knowledge</h3>
+                        <span id="accordion-icon-0">▼</span>
+                    </button>
+                    <div class="accordion-content" id="accordion-0">
+                        <p style="margin-top: 1rem;">Aurexa's team brings extensive experience across life sciences, pharmaceuticals, biotech, medical devices, healthcare, manufacturing and other compliance-intensive sectors. We understand the language, regulations and operational challenges these industries face daily.</p>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2 -->
+                <div class="accordion-item gradient-teal">
+                    <button class="accordion-button" onclick="toggleAccordion(1)">
+                        <h3 style="font-size: 1.25rem; font-weight: 600;">Compliance-first engineering</h3>
+                        <span id="accordion-icon-1">▼</span>
+                    </button>
+                    <div class="accordion-content" id="accordion-1">
+                        <p style="margin-top: 1rem;">Every system we build is designed with validation, audit trails, data integrity and regulatory readiness at its core. From 21 CFR Part 11 and EU Annex 11 to ISO 13485 and ICH-GCP, we ensure your digital infrastructure meets stringent global standards from day one.</p>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="accordion-item gradient-violet">
+                    <button class="accordion-button" onclick="toggleAccordion(2)">
+                        <h3 style="font-size: 1.25rem; font-weight: 600;">Innovation at scale</h3>
+                        <span id="accordion-icon-2">▼</span>
+                    </button>
+                    <div class="accordion-content" id="accordion-2">
+                        <p style="margin-top: 1rem;">Whether you're a mid-sized manufacturer or a global pharmaceutical enterprise, Aurexa's platforms are built to grow with you. We leverage cloud-native architecture, microservices, and modular design to ensure scalability, resilience and flexibility as your organization evolves.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do Section -->
+        <section class="section container">
+            <h2 class="h2">What we do</h2>
+            <p style="max-width: 800px; margin-bottom: 2rem;">A short, scannable view of our value to regulated organisations.</p>
+            
+            <div class="flip-cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <!-- Card 1 -->
+                <div class="flip-card-container">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-image" style="background-image: url('https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+                            <div style="position: absolute; inset: 0; background: linear-gradient(to bottom right, rgba(11, 95, 165, 0.1), rgba(6, 58, 102, 0.05)); opacity: 0.85;"></div>
+                            <div style="position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; text-align: center;">
+                                <div style="width: 64px; height: 64px; border-radius: 0.75rem; background: rgba(11, 95, 165, 0.2); color: var(--brand-blue); display: grid; place-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                                </div>
+                                <h3 class="flip-card-title" style="margin-top: 1rem;">Industry-Focused Products</h3>
+                            </div>
+                        </div>
+                        <div class="flip-card-back gradient-blue">
+                            <h3 style="font-weight: 700; margin-bottom: 0.75rem;">Industry-Focused Products</h3>
+                            <div class="flip-card-content" style="font-size: 0.875rem; line-height: 1.6;">
+                                <p>Aurexa Technologies develops intelligent, industry-focused digital products tailored for regulated and compliance-driven organizations. Our solutions are designed to help businesses modernize operations, strengthen quality processes, and maintain continuous regulatory readiness.</p>
+                                <p style="margin-top: 0.75rem;">The company specializes in AI-powered platforms, eQMS solutions, workflow automation, and scalable digital systems that help organizations improve compliance, operational efficiency, and audit readiness across industries.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="flip-card-container">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-image" style="background-image: url('https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+                            <div style="position: absolute; inset: 0; background: linear-gradient(to bottom right, rgba(45, 212, 191, 0.1), rgba(15, 118, 110, 0.05)); opacity: 0.85;"></div>
+                            <div style="position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; text-align: center;">
+                                <div style="width: 64px; height: 64px; border-radius: 0.75rem; background: rgba(45, 212, 191, 0.2); color: var(--brand-tealDark); display: grid; place-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><path d="M6 12h.01M10 12h.01M14 12h.01"></path></svg>
+                                </div>
+                                <h3 class="flip-card-title" style="margin-top: 1rem;">Secure Hosting & Managed Services</h3>
+                            </div>
+                        </div>
+                        <div class="flip-card-back gradient-teal">
+                            <h3 style="font-weight: 700; margin-bottom: 0.75rem;">Secure Hosting & Managed Services</h3>
+                            <div class="flip-card-content" style="font-size: 0.75rem; line-height: 1.5;">
+                                <p>Aurexa Technologies provides secure, enterprise-grade hosting and managed services designed for performance, compliance, and business continuity.</p>
+                                <p style="margin-top: 0.5rem; font-weight: 600;">Our managed services include:</p>
+                                <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                    <li>Secure cloud hosting environments</li>
+                                    <li>High availability and scalable infrastructure</li>
+                                    <li>Automated backup and disaster recovery</li>
+                                    <li>End-to-end encryption and data protection</li>
+                                    <li>24/7 system monitoring and proactive support</li>
+                                    <li>Compliance-focused operational governance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="flip-card-container">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-image" style="background-image: url('https://images.pexels.com/photos/3861951/pexels-photo-3861951.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+                            <div style="position: absolute; inset: 0; background: linear-gradient(to bottom right, rgba(124, 58, 237, 0.1), rgba(139, 92, 246, 0.05)); opacity: 0.85;"></div>
+                            <div style="position: relative; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; text-align: center;">
+                                <div style="width: 64px; height: 64px; border-radius: 0.75rem; background: rgba(124, 58, 237, 0.2); color: var(--brand-accent); display: grid; place-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="8" width="8" height="8" rx="1"></rect><path d="m4 12-2-2 2-2m16 0 2 2-2 2M8 4V2M8 22v-2M16 2v2M16 22v-2"></path></svg>
+                                </div>
+                                <h3 class="flip-card-title" style="margin-top: 1rem;">End-to-end IT Services</h3>
+                            </div>
+                        </div>
+                        <div class="flip-card-back gradient-violet">
+                            <h3 style="font-weight: 700; margin-bottom: 0.75rem;">End-to-end IT Services</h3>
+                            <div class="flip-card-content" style="font-size: 0.75rem; line-height: 1.5;">
+                                <p>Aurexa Technologies delivers comprehensive IT services that support organizations throughout their digital transformation journey.</p>
+                                <p style="margin-top: 0.5rem; font-weight: 600;">Our services include:</p>
+                                <ul style="margin-top: 0.5rem; padding-left: 1rem;">
+                                    <li>System integration services</li>
+                                    <li>Data migration and modernization</li>
+                                    <li>Custom application development</li>
+                                    <li>Platform implementation and configuration</li>
+                                    <li>Computer system validation (CSV) support</li>
+                                    <li>Application maintenance and technical support</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries Section -->
+        <section class="section container" id="industries">
+            <h2 class="h2">Industries we serve</h2>
+            <p style="max-width: 900px; margin-bottom: 2rem;">Aurexa Technologies specializes in serving highly regulated sectors where quality, compliance, and data integrity are mission-critical.</p>
+            
+            <div class="flip-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); height: 320px;">
+                <!-- Industry cards would go here - showing 3 as examples -->
+                <div class="flip-card-container">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-image" style="background-image: url('https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+                            <div class="gradient-blue" style="position: absolute; inset: 0; opacity: 0.8;"></div>
+                            <div style="position: relative; height: 100%; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+                                <h3 class="flip-card-title" style="text-align: center;">Life Sciences</h3>
+                            </div>
+                        </div>
+                        <div class="flip-card-back gradient-blue">
+                            <h3 style="font-weight: 700; font-size: 1.125rem; margin-bottom: 0.75rem;">Life Sciences</h3>
+                            <div class="flip-card-content" style="font-size: 0.875rem;">
+                                <p style="color: #475569; margin-bottom: 0.75rem;">Supporting pharmaceutical, biotech and clinical research organisations with validated, GxP-compliant digital systems.</p>
+                                <p style="color: #1e293b;">Aurexa delivers GxP-aligned platforms for drug development, clinical trials, laboratory management and quality operations. Our solutions meet FDA 21 CFR Part 11, EU Annex 11 and ICH guidelines.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card-container">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-image" style="background-image: url('https://images.pexels.com/photos/3683041/pexels-photo-3683041.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+                            <div class="gradient-purple" style="position: absolute; inset: 0; opacity: 0.8;"></div>
+                            <div style="position: relative; height: 100%; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+                                <h3 class="flip-card-title" style="text-align: center;">Pharmaceuticals</h3>
+                            </div>
+                        </div>
+                        <div class="flip-card-back gradient-purple">
+                            <h3 style="font-weight: 700; font-size: 1.125rem; margin-bottom: 0.75rem;">Pharmaceuticals</h3>
+                            <div class="flip-card-content" style="font-size: 0.875rem;">
+                                <p style="color: #475569; margin-bottom: 0.75rem;">Complete quality and compliance management for pharmaceutical manufacturing and distribution.</p>
+                                <p style="color: #1e293b;">From batch record management to deviation tracking and regulatory submissions, Aurexa helps pharmaceutical organizations maintain strict GMP compliance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card-container">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-card-image" style="background-image: url('https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=600')"></div>
+                            <div class="gradient-rose" style="position: absolute; inset: 0; opacity: 0.8;"></div>
+                            <div style="position: relative; height: 100%; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+                                <h3 class="flip-card-title" style="text-align: center;">Healthcare</h3>
+                            </div>
+                        </div>
+                        <div class="flip-card-back gradient-rose">
+                            <h3 style="font-weight: 700; font-size: 1.125rem; margin-bottom: 0.75rem;">Healthcare</h3>
+                            <div class="flip-card-content" style="font-size: 0.875rem;">
+                                <p style="color: #475569; margin-bottom: 0.75rem;">Enterprise quality and operational management systems for healthcare providers.</p>
+                                <p style="color: #1e293b;">From patient safety incident reporting to quality improvement programs and accreditation readiness, Aurexa helps healthcare organizations maintain operational excellence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section container" id="contact">
+            <h2 class="h2">Get in touch</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;">
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Contact Information</h3>
+                    <div style="space-y: 1rem;">
+                        <p><strong>Email (Sales):</strong> contact@aurexatech.com</p>
+                        <p><strong>Email (Support):</strong> support@aurexatech.com</p>
+                        <p><strong>Phone:</strong> +91 89777 80644</p>
+                        <p><strong>Secondary Phone:</strong> +91 77000 06639</p>
+                        <p><strong>Primary Email:</strong> <a href="mailto:jyotsnadevi.r@aurexatech.com" style="color: var(--brand-blue);">jyotsnadevi.r@aurexatech.com</a></p>
+                        <p><strong>Secondary Email:</strong> <a href="mailto:prasad@aurexatech.com" style="color: var(--brand-blue);">prasad@aurexatech.com</a></p>
+                        <p><strong>Office:</strong> Nellore, Andhra Pradesh, India, 524004</p>
+                        <p><strong>Hours:</strong> Mon–Fri 9:00–18:00 IST</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Send us a message</h3>
+                    <form style="display: flex; flex-direction: column; gap: 1rem;">
+                        <input type="text" placeholder="Your Name" style="padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 0.5rem;">
+                        <input type="email" placeholder="Your Email" style="padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 0.5rem;">
+                        <textarea placeholder="Your Message" rows="5" style="padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 0.5rem;"></textarea>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aurexa Technologies</h3>
+                    <p style="opacity: 0.8;">Enterprise digital platforms and managed services for regulated industries.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#industries">Industries</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="#products">Products</a>
+                    <a href="#">Hosting</a>
+                    <a href="#">IT Services</a>
+                    <a href="#">Consulting</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aurexa Technologies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Carousel
+        let currentSlide = 0;
+        let isPaused = false;
+        let slideInterval;
+        const slides = document.querySelectorAll('.hero-slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            updateDots();
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            const btn = document.getElementById('pauseBtn');
+            btn.textContent = isPaused ? '▶' : '⏸';
+            if (isPaused) {
+                clearInterval(slideInterval);
+            } else {
+                startCarousel();
+            }
+        }
+
+        function updateDots() {
+            const dotsContainer = document.getElementById('heroDots');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'hero-dot' + (i === currentSlide ? ' active' : '');
+                dot.onclick = () => showSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function startCarousel() {
+            slideInterval = setInterval(() => {
+                if (!isPaused) {
+                    nextSlide();
+                }
+            }, 4000);
+        }
+
+        // Accordion
+        function toggleAccordion(index) {
+            const content = document.getElementById('accordion-' + index);
+            const icon = document.getElementById('accordion-icon-' + index);
+            const isActive = content.classList.contains('active');
+            
+            content.classList.toggle('active');
+            icon.textContent = isActive ? '▼' : '▲';
+        }
+
+        // Initialize
+        updateDots();
+        startCarousel();
+
+        // Open first accordion by default
+        toggleAccordion(0);
+    </script>
+</body>
+</html>

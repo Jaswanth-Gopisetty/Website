@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { RegionProvider } from "@/components/RegionContext";
+import RedirectOnRefresh from "@/components/RedirectOnRefresh";
 
 export const metadata: Metadata = {
   title: "Aurexa Technologies — Enterprise Digital Platforms for Regulated Industries",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="min-h-screen bg-white text-brand-ink antialiased">
         <RegionProvider>
+          <RedirectOnRefresh />
           <Header />
           <main className="pt-32">{children}</main>
           <Footer />

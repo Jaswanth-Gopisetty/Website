@@ -82,19 +82,32 @@ export default function WhatWeDo() {
             >
               {/* Front Side */}
               <div 
-                className="absolute inset-0 rounded-2xl border-2 border-slate-300 overflow-hidden shadow-lg"
+                className="absolute inset-0 rounded-2xl border-2 border-slate-300 overflow-hidden shadow-lg group"
                 style={{ backfaceVisibility: 'hidden' }}
               >
-                <div 
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${image})` }}
-                />
-                <div className={`absolute inset-0 ${gradient} opacity-85`} />
+                {/* Animated background image with Ken Burns effect */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <img 
+                    src={image}
+                    alt={title}
+                    className="w-full h-full object-cover"
+                    style={{ animation: 'kenBurns 20s ease-in-out infinite alternate' }}
+                  />
+                </div>
+                {/* Darker overlay for better text contrast */}
+                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-500"></div>
+                <div className={`absolute inset-0 ${gradient} opacity-20 group-hover:opacity-10 transition-opacity duration-500`} />
+                
                 <div className="relative h-full flex flex-col items-center justify-center p-6 text-center">
-                  <div className={`w-16 h-16 rounded-xl ${iconBg} ${iconColor} grid place-items-center shadow-lg`}>
+                  <div className={`w-16 h-16 rounded-xl ${iconBg} ${iconColor} grid place-items-center shadow-lg backdrop-blur-sm bg-white/90`}>
                     <Icon size={28} />
                   </div>
-                  <h3 className="mt-4 font-bold text-xl text-white drop-shadow-lg">{title}</h3>
+                  {/* Enhanced text container with backdrop blur */}
+                  <div className="mt-4 backdrop-blur-sm bg-black/30 px-6 py-3 rounded-xl border border-white/30 shadow-2xl">
+                    <h3 className="font-bold text-2xl text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] tracking-wide">
+                      {title}
+                    </h3>
+                  </div>
                 </div>
               </div>
               

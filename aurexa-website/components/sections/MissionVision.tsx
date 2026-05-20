@@ -57,15 +57,31 @@ export default function MissionVision() {
                   className="absolute inset-0 rounded-2xl overflow-hidden"
                   style={{ backfaceVisibility: 'hidden' }}
                 >
-                  <div className="relative w-full h-full">
-                    <img
-                      src={card.image}
-                      alt={card.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-90`}></div>
+                  <div className="relative w-full h-full group">
+                    {/* Animated Image with Ken Burns Effect */}
+                    <div className="absolute inset-0 overflow-hidden">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="w-full h-full object-cover transition-transform duration-[20s] ease-linear animate-ken-burns group-hover:scale-110"
+                        style={{
+                          animation: 'kenBurns 20s ease-in-out infinite alternate'
+                        }}
+                      />
+                    </div>
+                    {/* Darker overlay for better text contrast */}
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all duration-500"></div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-30 group-hover:opacity-20 transition-opacity duration-500`}></div>
+                    
+                    {/* Text with enhanced visibility */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <h3 className="text-3xl font-bold text-white drop-shadow-lg">{card.title}</h3>
+                      <div className="text-center px-8">
+                        <div className="inline-block backdrop-blur-sm bg-black/30 px-8 py-4 rounded-2xl border border-white/20 shadow-2xl">
+                          <h3 className="text-4xl font-bold text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] tracking-wide">
+                            {card.title}
+                          </h3>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
