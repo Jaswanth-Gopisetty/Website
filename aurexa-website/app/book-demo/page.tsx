@@ -73,7 +73,7 @@ export default function BookDemoPage() {
             }
           }
         })
-        .catch(err => console.error("Failed to check availability:", err))
+        .catch(() => {})
         .finally(() => setCheckingAvailability(false));
     }
   }, [data.date, region]);

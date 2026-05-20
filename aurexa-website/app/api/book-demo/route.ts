@@ -2,20 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
-  const body = await req.json().catch(() => ({} as Record<string, unknown>));
-  const { name, email, org, industry, customIndustry, comments, date, window, note, region, reference } = body as Record<string, string>;
-  const displayIndustry = industry === "Other" ? customIndustry : industry;
-
   try {
+    const body = await req.json();
+    const { name, email, org, industry, customIndustry, comments, date, window, note, region, reference } = body;
+
+    const displayIndustry = industry === "Other" ? customIndustry : industry;
 
     // Check if SMTP is configured
     const smtpConfigured = process.env.SMTP_USER && process.env.SMTP_PASS;
 
     if (!smtpConfigured) {
       // SMTP not configured - return success without sending emails
-      console.log("Demo booking received (emails not sent - SMTP not configured):", {
-        name, email, org, industry: displayIndustry, date, window, region, reference
-      });
+      // Demo booking received (emails not sent - SMTP not configured)
       
       return NextResponse.json({ 
         success: true, 
@@ -309,7 +307,7 @@ Action Required:
       emailSent: true
     });
   } catch (error) {
-    console.error("Demo booking email error:", error);
+    // Demo booking email error occurred
     
     // Return success for booking but indicate email failure
     return NextResponse.json(

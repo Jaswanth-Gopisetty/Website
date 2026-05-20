@@ -125,7 +125,7 @@ export async function POST(req: NextRequest) {
       availability,
     });
   } catch (error) {
-    console.error("Availability check error:", error);
+    // Availability check error
     return NextResponse.json(
       { error: "Failed to check availability" },
       { status: 500 }

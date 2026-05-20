@@ -192,7 +192,6 @@ export default function CareersPage() {
         setStatus("error");
       }
     } catch (error) {
-      console.error("Application submission error:", error);
       setStatus("error");
     }
   };
@@ -271,6 +270,7 @@ export default function CareersPage() {
                   <input
                     type="text"
                     required
+                    placeholder="Enter your full name"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-transparent"
@@ -285,6 +285,7 @@ export default function CareersPage() {
                     <input
                       type="email"
                       required
+                      placeholder="Enter your email address"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-transparent"

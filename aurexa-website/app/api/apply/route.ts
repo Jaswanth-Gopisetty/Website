@@ -201,7 +201,7 @@ export async function POST(request: NextRequest) {
       await transporter.sendMail(companyEmail);
       await transporter.sendMail(applicantEmail);
     } catch (emailError) {
-      console.warn("Email sending failed (graceful degradation):", emailError);
+      // Email sending failed (graceful degradation)
       // Continue without failing - application is still recorded
     }
 
@@ -212,7 +212,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error("Application submission error:", error);
+    // Application submission error
     return NextResponse.json(
       { success: false, error: "Failed to submit application" },
       { status: 500 }

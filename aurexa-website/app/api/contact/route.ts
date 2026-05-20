@@ -56,7 +56,7 @@ ${message}
 
     return NextResponse.json({ success: true, reference });
   } catch (error) {
-    console.error("Error sending email:", error);
+    // Error sending email
     return NextResponse.json(
       { success: false, error: "Failed to send email" },
       { status: 500 }

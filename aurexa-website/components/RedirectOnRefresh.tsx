@@ -1,18 +1,9 @@
 'use client';
 
-import { useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+// This component was previously redirecting all pages to home
+// Removed the redirect logic as it was breaking navigation
+// Keep component for potential future scroll restoration or other client-side effects
 
 export default function RedirectOnRefresh() {
-  const pathname = usePathname();
-  const router = useRouter();
-
-  useEffect(() => {
-    // Only redirect if not already on homepage
-    if (pathname !== '/') {
-      router.push('/');
-    }
-  }, [pathname, router]);
-
   return null;
 }
