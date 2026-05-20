@@ -2,11 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
-    const { name, email, org, industry, customIndustry, comments, date, window, note, region, reference } = body;
+  const body = await req.json().catch(() => ({} as Record<string, unknown>));
+  const { name, email, org, industry, customIndustry, comments, date, window, note, region, reference } = body as Record<string, string>;
+  const displayIndustry = industry === "Other" ? customIndustry : industry;
 
-    const displayIndustry = industry === "Other" ? customIndustry : industry;
+  try {
 
     // Check if SMTP is configured
     const smtpConfigured = process.env.SMTP_USER && process.env.SMTP_PASS;

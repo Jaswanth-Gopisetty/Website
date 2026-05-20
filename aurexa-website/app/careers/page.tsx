@@ -247,7 +247,9 @@ export default function CareersPage() {
                 <p className="text-sm text-slate-600 mt-1">{selectedRole}</p>
               </div>
               <button
+                type="button"
                 onClick={handleCloseForm}
+                aria-label="Close application form"
                 className="p-2 hover:bg-slate-100 rounded-lg transition-colors"
               >
                 <X size={24} className="text-slate-600" />
