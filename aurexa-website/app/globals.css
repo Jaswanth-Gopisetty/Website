@@ -19,6 +19,16 @@ html, body {
   color: var(--fg); 
   overflow-x: hidden;
   width: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+}
+
+* {
+  font-family: Helvetica, Arial, sans-serif !important;
+}
+
+p {
+  text-align: justify !important;
 }
 
 .gradient-hero {

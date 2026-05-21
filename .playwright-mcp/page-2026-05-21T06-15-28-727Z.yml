@@ -1,0 +1,99 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Aurexa Technologies — Home" [ref=e4] [cursor=pointer]:
+        - /url: "#/home"
+        - img "Aurexa Technologies" [ref=e5]
+      - navigation [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: "#/home"
+        - link "About" [ref=e8] [cursor=pointer]:
+          - /url: "#/about"
+        - link "Industries" [ref=e9] [cursor=pointer]:
+          - /url: "#/industries"
+        - link "Careers" [ref=e10] [cursor=pointer]:
+          - /url: "#/careers"
+        - link "Contact" [ref=e11] [cursor=pointer]:
+          - /url: "#/contact"
+      - link "Book a Demo" [ref=e13] [cursor=pointer]:
+        - /url: "#/book-demo"
+  - heading "We take the opportunity to analyse and develop innovative solutions for regulated industries" [level=2] [ref=e16]
+  - main [ref=e17]:
+    - generic [ref=e19]:
+      - heading "Careers at Aurexa" [level=1] [ref=e20]
+      - paragraph [ref=e22]: Join a specialist team building regulated software that matters. Expect collaborative teams, domain learning opportunities and real ownership over quality-critical products.
+      - generic [ref=e23]:
+        - group [ref=e24]:
+          - generic "Product Analyst — QMS" [ref=e25] [cursor=pointer]
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - paragraph [ref=e28]: Responsibilities
+              - list [ref=e29]:
+                - listitem [ref=e30]: • Gather URS, translate into user stories
+                - listitem [ref=e31]: • Validate acceptance criteria
+                - listitem [ref=e32]: • Liaise with QA & engineering
+            - generic [ref=e33]:
+              - paragraph [ref=e34]: Must-have
+              - list [ref=e35]:
+                - listitem [ref=e36]: • Understanding of GxP processes or strong curiosity and ability to learn quickly
+            - button "Apply" [ref=e37] [cursor=pointer]
+        - group [ref=e38]:
+          - generic "QA Engineer — Regulated Apps" [ref=e39] [cursor=pointer]
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - paragraph [ref=e42]: Responsibilities
+              - list [ref=e43]:
+                - listitem [ref=e44]: • Automation and manual testing
+                - listitem [ref=e45]: • Release gating
+                - listitem [ref=e46]: • Validation artifacts
+            - generic [ref=e47]:
+              - paragraph [ref=e48]: Must-have
+              - list [ref=e49]:
+                - listitem [ref=e50]: • ISTQB / practical experience with regulated validation desirable
+            - button "Apply" [ref=e51] [cursor=pointer]
+  - contentinfo [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - img "Aurexa Technologies" [ref=e56]
+        - paragraph [ref=e57]: Where innovation meets compliance, and technology drives growth.
+      - generic [ref=e58]:
+        - heading "Company" [level=4] [ref=e59]
+        - list [ref=e60]:
+          - listitem [ref=e61]:
+            - link "About" [ref=e62] [cursor=pointer]:
+              - /url: "#/about"
+          - listitem [ref=e63]:
+            - link "Industries" [ref=e64] [cursor=pointer]:
+              - /url: "#/industries"
+          - listitem [ref=e65]:
+            - link "Careers" [ref=e66] [cursor=pointer]:
+              - /url: "#/careers"
+          - listitem [ref=e67]:
+            - link "Book a Demo" [ref=e68] [cursor=pointer]:
+              - /url: "#/book-demo"
+          - listitem [ref=e69]:
+            - link "Contact" [ref=e70] [cursor=pointer]:
+              - /url: "#/contact"
+          - listitem [ref=e71]:
+            - link "Privacy" [ref=e72] [cursor=pointer]:
+              - /url: "#/privacy"
+          - listitem [ref=e73]:
+            - link "Terms" [ref=e74] [cursor=pointer]:
+              - /url: "#/terms"
+      - generic [ref=e75]:
+        - heading "Follow us" [level=4] [ref=e76]
+        - generic [ref=e77]:
+          - link "LinkedIn" [ref=e78] [cursor=pointer]:
+            - /url: https://linkedin.com/company/aurexatech
+            - img [ref=e79]
+          - link "YouTube" [ref=e83] [cursor=pointer]:
+            - /url: https://youtube.com/@aurexatech
+            - img [ref=e84]
+          - link "X" [ref=e87] [cursor=pointer]:
+            - /url: https://x.com/aurexatech
+            - img [ref=e88]
+          - link "Facebook" [ref=e90] [cursor=pointer]:
+            - /url: https://facebook.com/aurexatech
+            - img [ref=e91]
+        - paragraph [ref=e93]: Follow Aurexa for product updates, regulatory guidance and case studies.
+    - generic [ref=e96]: © 2026 Aurexa Technologies. All rights reserved.

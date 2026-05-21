@@ -16,7 +16,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui"],
+        sans: ["Helvetica", "Arial", "sans-serif"],
       },
       boxShadow: {
         glow: "0 10px 40px -10px rgba(20,184,166,0.35)",

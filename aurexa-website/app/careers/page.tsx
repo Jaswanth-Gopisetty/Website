@@ -217,11 +217,11 @@ export default function CareersPage() {
               <div className="mt-4 grid gap-3 text-sm text-black">
                 <div>
                   <p className="font-medium text-black">Responsibilities</p>
-                  <ul className="mt-1 space-y-1">{r.responsibilities.map(x => <li key={x}>• {x}</li>)}</ul>
+                  <ul className="mt-1 space-y-1">{r.responsibilities.map(x => <li key={x}>▸ {x}</li>)}</ul>
                 </div>
                 <div>
                   <p className="font-medium text-black">Must-have</p>
-                  <ul className="mt-1 space-y-1">{r.musts.map(x => <li key={x}>• {x}</li>)}</ul>
+                  <ul className="mt-1 space-y-1">{r.musts.map(x => <li key={x}>▸ {x}</li>)}</ul>
                 </div>
                 <button 
                   onClick={() => handleApply(r.title)}

@@ -1,0 +1,116 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Aurexa Technologies — Home" [ref=e4] [cursor=pointer]:
+        - /url: "#/home"
+        - img "Aurexa Technologies" [ref=e5]
+      - navigation [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: "#/home"
+        - link "About" [ref=e8] [cursor=pointer]:
+          - /url: "#/about"
+        - link "Industries" [ref=e9] [cursor=pointer]:
+          - /url: "#/industries"
+        - link "Careers" [ref=e10] [cursor=pointer]:
+          - /url: "#/careers"
+        - link "Contact" [ref=e11] [cursor=pointer]:
+          - /url: "#/contact"
+      - link "Book a Demo" [ref=e13] [cursor=pointer]:
+        - /url: "#/book-demo"
+  - heading "We take the opportunity to analyse and develop innovative solutions for regulated industries" [level=2] [ref=e16]
+  - main [ref=e17]:
+    - generic [ref=e358]:
+      - generic [ref=e359]:
+        - heading "Contact Aurexa" [level=1] [ref=e360]
+        - paragraph [ref=e362]: Sales, Support, Careers or Partnership - pick a queue and we'll route it.
+        - list [ref=e363]:
+          - listitem [ref=e364]:
+            - strong [ref=e365]: "Email (Sales):"
+            - text: contact@aurexatech.com
+          - listitem [ref=e366]:
+            - strong [ref=e367]: "Email (Support):"
+            - text: support@aurexatech.com
+          - listitem [ref=e368]:
+            - strong [ref=e369]: "Phone:"
+            - text: +91 89777 80644, +91 77000 06639
+          - listitem [ref=e370]:
+            - strong [ref=e371]: "Primary Email:"
+            - link "jyotsnadevi.r@aurexatech.com" [ref=e372] [cursor=pointer]:
+              - /url: mailto:jyotsnadevi.r@aurexatech.com
+          - listitem [ref=e373]:
+            - strong [ref=e374]: "Secondary Email:"
+            - link "prasad@aurexatech.com" [ref=e375] [cursor=pointer]:
+              - /url: mailto:prasad@aurexatech.com
+          - listitem [ref=e376]:
+            - strong [ref=e377]: "Office:"
+            - text: Aurexa Technologies (P) LTD, Nellore, Andhra pradesh, India, 524004
+          - listitem [ref=e378]:
+            - strong [ref=e379]: "Hours:"
+            - text: Mon–Fri 9:00–18:00 IST
+      - generic [ref=e380]:
+        - generic [ref=e381]:
+          - text: Query type
+          - combobox "Query type" [ref=e382]:
+            - option "Sales" [selected]
+            - option "Support"
+            - option "Careers"
+            - option "Partnership"
+        - generic [ref=e383]:
+          - text: Name
+          - textbox "Name" [ref=e384]
+        - generic [ref=e385]:
+          - text: Email
+          - textbox "Email" [ref=e386]
+        - generic [ref=e387]:
+          - text: Message
+          - textbox "Message" [ref=e388]
+        - generic [ref=e389]:
+          - text: Attachment (optional)
+          - button "Attachment (optional)" [ref=e390] [cursor=pointer]
+        - button "Send message" [ref=e391] [cursor=pointer]
+  - contentinfo [ref=e312]:
+    - generic [ref=e313]:
+      - generic [ref=e314]:
+        - img "Aurexa Technologies" [ref=e316]
+        - paragraph [ref=e317]: Where innovation meets compliance, and technology drives growth.
+      - generic [ref=e318]:
+        - heading "Company" [level=4] [ref=e319]
+        - list [ref=e320]:
+          - listitem [ref=e321]:
+            - link "About" [ref=e322] [cursor=pointer]:
+              - /url: "#/about"
+          - listitem [ref=e323]:
+            - link "Industries" [ref=e324] [cursor=pointer]:
+              - /url: "#/industries"
+          - listitem [ref=e325]:
+            - link "Careers" [ref=e326] [cursor=pointer]:
+              - /url: "#/careers"
+          - listitem [ref=e327]:
+            - link "Book a Demo" [ref=e328] [cursor=pointer]:
+              - /url: "#/book-demo"
+          - listitem [ref=e329]:
+            - link "Contact" [ref=e330] [cursor=pointer]:
+              - /url: "#/contact"
+          - listitem [ref=e331]:
+            - link "Privacy" [ref=e332] [cursor=pointer]:
+              - /url: "#/privacy"
+          - listitem [ref=e333]:
+            - link "Terms" [ref=e334] [cursor=pointer]:
+              - /url: "#/terms"
+      - generic [ref=e335]:
+        - heading "Follow us" [level=4] [ref=e336]
+        - generic [ref=e337]:
+          - link "LinkedIn" [ref=e338] [cursor=pointer]:
+            - /url: https://linkedin.com/company/aurexatech
+            - img [ref=e339]
+          - link "YouTube" [ref=e343] [cursor=pointer]:
+            - /url: https://youtube.com/@aurexatech
+            - img [ref=e344]
+          - link "X" [ref=e347] [cursor=pointer]:
+            - /url: https://x.com/aurexatech
+            - img [ref=e348]
+          - link "Facebook" [ref=e350] [cursor=pointer]:
+            - /url: https://facebook.com/aurexatech
+            - img [ref=e351]
+        - paragraph [ref=e353]: Follow Aurexa for product updates, regulatory guidance and case studies.
+    - generic [ref=e356]: © 2026 Aurexa Technologies. All rights reserved.

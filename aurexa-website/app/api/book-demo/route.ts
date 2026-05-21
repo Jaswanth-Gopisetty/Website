@@ -2,11 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
-  let reference: string | undefined;
   try {
     const body = await req.json();
-    const { name, email, org, industry, customIndustry, comments, date, window, note, region } = body;
-    reference = body.reference;
+    const { name, email, org, industry, customIndustry, comments, date, window, note, region, reference } = body;
 
     const displayIndustry = industry === "Other" ? customIndustry : industry;
 

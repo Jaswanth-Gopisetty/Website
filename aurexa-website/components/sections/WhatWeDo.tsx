@@ -62,8 +62,8 @@ export default function WhatWeDo() {
 
   return (
     <section className="section">
-      <h2 className="h2">What we do</h2>
-      <p className="text-black mt-2 max-w-2xl leading-relaxed">A short, scannable view of our value to regulated organisations.</p>
+      <h2 className="h2 font-bold">What we do</h2>
+      <p className="text-black mt-2 max-w-2xl leading-relaxed font-bold">A short, scannable view of our value to regulated organisations.</p>
       <div className="mt-10 grid md:grid-cols-3 gap-6">
         {ITEMS.map(({ icon: Icon, title, body, body2, bullets, footer, gradient, iconBg, iconColor, image }, index) => (
           <div 
@@ -126,17 +126,17 @@ export default function WhatWeDo() {
                   <h3 className="font-bold text-lg text-slate-900">{title}</h3>
                 </div>
                 <div className="overflow-y-auto flex-1 space-y-2">
-                  <p className="text-slate-800 text-xs leading-relaxed">{body}</p>
-                  {body2 && <p className="text-slate-800 text-xs leading-relaxed">{body2}</p>}
+                  <p className="text-slate-800 text-xs leading-relaxed font-bold">{body}</p>
+                  {body2 && <p className="text-slate-800 text-xs leading-relaxed font-bold">{body2}</p>}
                   {bullets && (
                     <>
-                      <p className="text-slate-900 text-xs font-semibold mt-2">Our {title.includes('Services') ? 'managed services' : 'services'} include:</p>
-                      <ul className="text-slate-800 text-xs space-y-1 leading-relaxed">
-                        {bullets.map(b => <li key={b}>• {b}</li>)}
+                      <p className="text-slate-900 text-xs font-semibold mt-2 font-bold">Our {title.includes('Services') ? 'managed services' : 'services'} include:</p>
+                      <ul className="text-slate-800 text-xs space-y-1 leading-relaxed font-bold">
+                        {bullets.map(b => <li key={b}>▸ {b}</li>)}
                       </ul>
                     </>
                   )}
-                  {footer && <p className="text-slate-800 text-xs leading-relaxed mt-2">{footer}</p>}
+                  {footer && <p className="text-slate-800 text-xs leading-relaxed mt-2 font-bold">{footer}</p>}
                 </div>
               </div>
             </div>
