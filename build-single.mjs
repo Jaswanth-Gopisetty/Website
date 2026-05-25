@@ -644,7 +644,7 @@ ${css}
 html, body { background: #ffffff; }
 /* Justify all text content */
 p, .lede, li, td, th, div:not(.flex):not(.grid):not(.inline-flex):not([class*="rounded"]):not([class*="button"]) > *:not(button):not(a):not(svg):not(img), 
-summary, label, textarea, .text-content, details div { text-align: justify !important; }
+summary, textarea, .text-content, details div { text-align: justify !important; }
 </style>
 </head>
 <body class="min-h-screen bg-white text-brand-ink antialiased">
