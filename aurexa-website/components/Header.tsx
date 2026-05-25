@@ -48,7 +48,7 @@ export default function Header() {
       </header>
       <div className="fixed top-16 left-0 right-0 z-30 bg-gradient-to-r from-brand-blue/30 via-brand-teal/25 to-brand-blue/30 backdrop-blur-md border-b border-brand-blue/40 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-3 text-center">
-          <h2 className="text-sm md:text-base font-semibold text-brand-blueDark">
+          <h2 className="text-sm md:text-base font-semibold text-brand-blueDark text-center">
             We take the opportunity to analyse and develop innovative solutions for regulated industries
           </h2>
         </div>

@@ -1,0 +1,247 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Aurexa Technologies — Home" [ref=e4] [cursor=pointer]:
+        - /url: "#/home"
+        - img "Aurexa Technologies" [ref=e5]
+      - navigation [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: "#/home"
+        - link "About" [ref=e8] [cursor=pointer]:
+          - /url: "#/about"
+        - link "Industries" [ref=e9] [cursor=pointer]:
+          - /url: "#/industries"
+        - link "Careers" [ref=e10] [cursor=pointer]:
+          - /url: "#/careers"
+        - link "Contact" [ref=e11] [cursor=pointer]:
+          - /url: "#/contact"
+      - link "Book a Demo" [ref=e13] [cursor=pointer]:
+        - /url: "#/book-demo"
+  - heading "We take the opportunity to analyse and develop innovative solutions for regulated industries" [level=2] [ref=e16]
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - img [ref=e26]
+            - text: Aurexa Technologies
+          - heading "Where Innovation Meets Compliance, and Technology Drives Growth." [level=1] [ref=e28]
+          - paragraph [ref=e29]: Aurexa Technologies delivers enterprise digital platforms and managed services designed to simplify compliance, strengthen operational control, and improve quality outcomes across regulated industries.
+          - generic [ref=e30]:
+            - link "Book a Demo" [ref=e31] [cursor=pointer]:
+              - /url: "#/book-demo"
+              - img [ref=e32]
+              - text: Book a Demo
+            - link "Explore Products" [ref=e34] [cursor=pointer]:
+              - /url: "#/products"
+          - generic [ref=e35]:
+            - link "contact@aurexatech.com" [ref=e36] [cursor=pointer]:
+              - /url: mailto:contact@aurexatech.com
+              - img [ref=e37]
+              - text: contact@aurexatech.com
+            - link "+91 89777 80644" [ref=e40] [cursor=pointer]:
+              - /url: tel:+91 89777 80644
+              - img [ref=e41]
+              - text: +91 89777 80644
+            - link "+91 77000 06639" [ref=e43] [cursor=pointer]:
+              - /url: tel:+917700006639
+              - img [ref=e44]
+              - text: +91 77000 06639
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - button "Previous slide" [ref=e48] [cursor=pointer]:
+              - img [ref=e49]
+            - button "Slide 1" [ref=e51] [cursor=pointer]
+            - button "Slide 2" [ref=e52] [cursor=pointer]
+            - button "Slide 3" [ref=e53] [cursor=pointer]
+            - button "Slide 4" [ref=e54] [cursor=pointer]
+            - button "Slide 5" [ref=e55] [cursor=pointer]
+            - button "Next slide" [ref=e56] [cursor=pointer]:
+              - img [ref=e57]
+          - generic [ref=e59]:
+            - generic [ref=e60]:
+              - text: "1"
+              - generic [ref=e61]: / 5
+            - button "Pause" [ref=e62] [cursor=pointer]:
+              - img [ref=e63]
+      - generic [ref=e66]:
+        - heading "What we do" [level=2] [ref=e67]
+        - paragraph [ref=e68]: A short, scannable view of our value to regulated organisations.
+        - generic [ref=e69]:
+          - generic [ref=e71]:
+            - generic [ref=e72]:
+              - img "Industry-Focused Products" [ref=e74]
+              - generic [ref=e77]:
+                - img [ref=e79]
+                - heading "Industry-Focused Products" [level=3] [ref=e90]
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - img [ref=e94]
+                - heading "Industry-Focused Products" [level=3] [ref=e104]
+              - generic [ref=e105]:
+                - paragraph [ref=e106]: Aurexa Technologies develops intelligent, industry-focused digital products tailored for regulated and compliance-driven organizations. Our solutions are designed to help businesses modernize operations, strengthen quality processes, and maintain continuous regulatory readiness.
+                - paragraph [ref=e107]: The company specializes in AI-powered platforms, eQMS solutions, workflow automation, and scalable digital systems that help organizations improve compliance, operational efficiency, and audit readiness across industries.
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - img "Secure Hosting & Managed Services" [ref=e112]
+              - generic [ref=e115]:
+                - img [ref=e117]
+                - heading "Secure Hosting & Managed Services" [level=3] [ref=e130]
+            - generic [ref=e131]:
+              - generic [ref=e132]:
+                - img [ref=e134]
+                - heading "Secure Hosting & Managed Services" [level=3] [ref=e146]
+              - generic [ref=e147]:
+                - paragraph [ref=e148]: Aurexa Technologies provides secure, enterprise-grade hosting and managed services designed for performance, compliance, and business continuity. Our infrastructure is built to support highly regulated environments with a strong focus on security, availability, and operational resilience.
+                - paragraph [ref=e149]: "Our managed services include:"
+                - list [ref=e150]:
+                  - listitem [ref=e151]: ▸ Secure cloud hosting environments
+                  - listitem [ref=e152]: ▸ High availability and scalable infrastructure
+                  - listitem [ref=e153]: ▸ Automated backup and disaster recovery
+                  - listitem [ref=e154]: ▸ End-to-end encryption and data protection
+                  - listitem [ref=e155]: ▸ 24/7 system monitoring and proactive support
+                  - listitem [ref=e156]: ▸ Compliance-focused operational governance
+                  - listitem [ref=e157]: ▸ Access control and security management
+                  - listitem [ref=e158]: ▸ Continuous performance optimization
+                - paragraph [ref=e159]: Through proactive monitoring, risk management, and compliance-aligned operational controls, we help organizations maintain reliable, secure, and audit-ready systems throughout the entire solution lifecycle.
+          - generic [ref=e161]:
+            - generic [ref=e162]:
+              - img "End-to-end IT Services" [ref=e164]
+              - generic [ref=e167]:
+                - img [ref=e169]
+                - heading "End-to-end IT Services" [level=3] [ref=e174]
+            - generic [ref=e175]:
+              - generic [ref=e176]:
+                - img [ref=e178]
+                - heading "End-to-end IT Services" [level=3] [ref=e182]
+              - generic [ref=e183]:
+                - paragraph [ref=e184]: Aurexa Technologies delivers comprehensive IT services that support organizations throughout their digital transformation journey. We combine technical expertise with compliance-focused execution to ensure reliable, scalable, and validated solutions for regulated industries.
+                - paragraph [ref=e185]: "Our managed services include:"
+                - list [ref=e186]:
+                  - listitem [ref=e187]: ▸ System integration services
+                  - listitem [ref=e188]: ▸ Data migration and modernization
+                  - listitem [ref=e189]: ▸ Custom application development
+                  - listitem [ref=e190]: ▸ Platform implementation and configuration
+                  - listitem [ref=e191]: ▸ Computer system validation (CSV) support
+                  - listitem [ref=e192]: ▸ Compliance and quality-focused consulting
+                  - listitem [ref=e193]: ▸ Application maintenance and technical support
+                  - listitem [ref=e194]: ▸ Process automation and optimization
+      - generic [ref=e195]:
+        - heading "Explore Products" [level=2] [ref=e196]
+        - paragraph [ref=e197]: Our flagship platform for regulated industries — built for compliance, designed for scale.
+        - generic [ref=e200] [cursor=pointer]:
+          - generic [ref=e202]:
+            - img "QCMetric Logo" [ref=e204]
+            - generic [ref=e205]: Flagship Product
+            - heading "QCMetric" [level=3] [ref=e206]
+            - paragraph [ref=e207]: QCMetric is an advanced, AI-powered eQMS platform that seamlessly connects quality, compliance and operational workflows into a single regulated system.
+          - generic [ref=e208]:
+            - generic [ref=e209]:
+              - img "QCMetric Logo" [ref=e211]
+              - generic [ref=e212]:
+                - generic [ref=e213]: Flagship Product
+                - heading "QCMetric" [level=3] [ref=e214]
+            - list [ref=e215]:
+              - listitem [ref=e216]:
+                - img [ref=e217]
+                - text: AI-powered quality management & eQMS
+              - listitem [ref=e220]:
+                - img [ref=e221]
+                - text: CAPA, Deviations, Change Control & Audit Trail
+              - listitem [ref=e224]:
+                - img [ref=e225]
+                - text: Document & Training Management
+              - listitem [ref=e228]:
+                - img [ref=e229]
+                - text: Dynamic Forms & Configurable Workflows
+              - listitem [ref=e232]:
+                - img [ref=e233]
+                - text: Real-time KPIs and compliance dashboards
+              - listitem [ref=e236]:
+                - img [ref=e237]
+                - text: GxP · FDA 21 CFR Part 11 · ISO · GDPR aligned
+            - link "Visit QCMetric" [ref=e240]:
+              - /url: https://qcmetric.com
+              - text: Visit QCMetric
+              - img [ref=e241]
+      - generic [ref=e245]:
+        - heading "About Aurexa Technologies" [level=2] [ref=e246]
+        - paragraph [ref=e248]: Aurexa is a domain-first technology organization built to help regulated industries move beyond brittle, manual operations. We deliver auditable, automated, and intelligent systems that unite deep regulatory know-how with modern cloud engineering. Our platforms withstand inspection, accelerate compliance, and scale confidently with business growth.
+        - generic [ref=e249]:
+          - button "Deep domain knowledge" [ref=e251] [cursor=pointer]:
+            - generic [ref=e252]: Deep domain knowledge
+            - img [ref=e253]
+          - button "Compliance-first engineering" [ref=e256] [cursor=pointer]:
+            - generic [ref=e257]: Compliance-first engineering
+            - img [ref=e258]
+          - button "Innovation at scale" [ref=e261] [cursor=pointer]:
+            - generic [ref=e262]: Innovation at scale
+            - img [ref=e263]
+      - generic [ref=e266]:
+        - generic [ref=e268] [cursor=pointer]:
+          - generic [ref=e270]:
+            - img "Mission" [ref=e272]
+            - heading "Mission" [level=3] [ref=e278]
+          - generic [ref=e279]:
+            - img [ref=e281]
+            - heading "Mission" [level=3] [ref=e285]
+            - paragraph [ref=e286]:
+              - strong [ref=e287]: Current Mission —
+              - text: To empower regulated organizations to adopt digital workflows confidently through reliable, compliant and scalable solutions that improve quality, efficiency and cross-team collaboration.
+            - button "See more" [ref=e288]:
+              - text: See more
+              - img [ref=e289]
+        - generic [ref=e292] [cursor=pointer]:
+          - generic [ref=e294]:
+            - img "Vision" [ref=e296]
+            - heading "Vision" [level=3] [ref=e302]
+          - generic [ref=e303]:
+            - img [ref=e305]
+            - heading "Vision" [level=3] [ref=e308]
+            - paragraph [ref=e309]: To help organizations achieve operational excellence and regulatory confidence through innovative, intelligent, and compliant digital transformation solutions.
+  - contentinfo [ref=e310]:
+    - generic [ref=e311]:
+      - generic [ref=e312]:
+        - img "Aurexa Technologies" [ref=e314]
+        - paragraph [ref=e315]: Where innovation meets compliance, and technology drives growth.
+      - generic [ref=e316]:
+        - heading "Company" [level=4] [ref=e317]
+        - list [ref=e318]:
+          - listitem [ref=e319]:
+            - link "About" [ref=e320] [cursor=pointer]:
+              - /url: "#/about"
+          - listitem [ref=e321]:
+            - link "Industries" [ref=e322] [cursor=pointer]:
+              - /url: "#/industries"
+          - listitem [ref=e323]:
+            - link "Careers" [ref=e324] [cursor=pointer]:
+              - /url: "#/careers"
+          - listitem [ref=e325]:
+            - link "Book a Demo" [ref=e326] [cursor=pointer]:
+              - /url: "#/book-demo"
+          - listitem [ref=e327]:
+            - link "Contact" [ref=e328] [cursor=pointer]:
+              - /url: "#/contact"
+          - listitem [ref=e329]:
+            - link "Privacy" [ref=e330] [cursor=pointer]:
+              - /url: "#/privacy"
+          - listitem [ref=e331]:
+            - link "Terms" [ref=e332] [cursor=pointer]:
+              - /url: "#/terms"
+      - generic [ref=e333]:
+        - heading "Follow us" [level=4] [ref=e334]
+        - generic [ref=e335]:
+          - link "LinkedIn" [ref=e336] [cursor=pointer]:
+            - /url: https://linkedin.com/company/aurexatech
+            - img [ref=e337]
+          - link "YouTube" [ref=e341] [cursor=pointer]:
+            - /url: https://youtube.com/@aurexatech
+            - img [ref=e342]
+          - link "X" [ref=e345] [cursor=pointer]:
+            - /url: https://x.com/aurexatech
+            - img [ref=e346]
+          - link "Facebook" [ref=e348] [cursor=pointer]:
+            - /url: https://facebook.com/aurexatech
+            - img [ref=e349]
+        - paragraph [ref=e351]: Follow Aurexa for product updates, regulatory guidance and case studies.
+    - generic [ref=e354]: © 2026 Aurexa Technologies. All rights reserved.

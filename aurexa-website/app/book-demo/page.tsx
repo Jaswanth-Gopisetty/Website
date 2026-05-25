@@ -130,7 +130,7 @@ export default function BookDemoPage() {
         </span>
         <h1 className="text-3xl font-bold text-black mt-2">See QCMetric in Action</h1>
         <div className="mt-6 p-6 bg-gradient-to-r from-brand-blue/5 to-brand-teal/5 border-l-4 border-brand-blue rounded-lg">
-          <p className="text-xl font-semibold text-slate-900 leading-relaxed">
+          <p className="text-xl font-semibold text-slate-900 leading-relaxed text-center">
             Book a short 30–45 minute walkthrough tailored to your industry and compliance needs. We&apos;ll prepare a sandbox demo aligned to your samples and compliance model.
           </p>
         </div>

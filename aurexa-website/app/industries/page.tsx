@@ -81,7 +81,7 @@ export default function IndustriesPage() {
     <section className="section">
       <h1 className="h1">Industries</h1>
       <div className="mt-6 p-6 bg-gradient-to-r from-brand-blue/5 to-brand-teal/5 border-l-4 border-brand-blue rounded-lg">
-        <p className="text-xl font-semibold text-slate-900 leading-relaxed">
+        <p className="text-xl font-semibold text-slate-900 leading-relaxed text-center">
           We support organizations across highly regulated industries including Life Sciences, Pharmaceuticals, Biotechnology, Medical Devices, Healthcare, Manufacturing, Clinical Research, Marine, Mining, and other regulatory & compliance-driven enterprises.
         </p>
       </div>

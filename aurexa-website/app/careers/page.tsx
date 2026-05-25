@@ -206,7 +206,7 @@ export default function CareersPage() {
       <section className="section">
         <h1 className="h1">Careers at Aurexa</h1>
         <div className="mt-6 p-6 bg-gradient-to-r from-brand-blue/5 to-brand-teal/5 border-l-4 border-brand-blue rounded-lg">
-          <p className="text-xl font-semibold text-slate-900 leading-relaxed">
+          <p className="text-xl font-semibold text-slate-900 leading-relaxed text-center">
             Join a specialist team building regulated software that matters. Expect collaborative teams, domain learning opportunities and real ownership over quality-critical products.
           </p>
         </div>
