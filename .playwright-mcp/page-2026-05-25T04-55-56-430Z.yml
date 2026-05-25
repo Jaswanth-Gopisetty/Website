@@ -1,0 +1,104 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Aurexa Technologies — Home" [ref=e4] [cursor=pointer]:
+        - /url: "#/home"
+        - img "Aurexa Technologies" [ref=e5]
+      - navigation [ref=e6]:
+        - link "Home" [ref=e7] [cursor=pointer]:
+          - /url: "#/home"
+        - link "About" [ref=e8] [cursor=pointer]:
+          - /url: "#/about"
+        - link "Industries" [ref=e9] [cursor=pointer]:
+          - /url: "#/industries"
+        - link "Careers" [ref=e10] [cursor=pointer]:
+          - /url: "#/careers"
+        - link "Contact" [ref=e11] [cursor=pointer]:
+          - /url: "#/contact"
+      - link "Book a Demo" [ref=e13] [cursor=pointer]:
+        - /url: "#/book-demo"
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - heading "About Aurexa Technologies" [level=2] [ref=e17]
+        - paragraph [ref=e19]: Aurexa is a domain-first technology organization built to help regulated industries move beyond brittle, manual operations. We deliver auditable, automated, and intelligent systems that unite deep regulatory know-how with modern cloud engineering. Our platforms withstand inspection, accelerate compliance, and scale confidently with business growth.
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - button "Deep domain knowledge" [active] [ref=e22] [cursor=pointer]:
+              - generic [ref=e23]: Deep domain knowledge
+              - img [ref=e24]
+            - paragraph [ref=e127]: At Aurexa Technologies our team brings decades of hands-on expertise across life sciences, pharmaceuticals, medical devices, and other highly regulated industries. This deep domain knowledge enables us to design solutions grounded in real-world operational challenges, regulatory expectations, and industry best practices. By combining practical industry experience with technology-driven innovation, we help organizations streamline compliance, improve quality processes, and achieve operational excellence with confidence.
+          - button "Compliance-first engineering" [ref=e27] [cursor=pointer]:
+            - generic [ref=e28]: Compliance-first engineering
+            - img [ref=e29]
+          - button "Innovation at scale" [ref=e32] [cursor=pointer]:
+            - generic [ref=e33]: Innovation at scale
+            - img [ref=e34]
+      - generic [ref=e37]:
+        - generic [ref=e39] [cursor=pointer]:
+          - generic [ref=e41]:
+            - img "Mission" [ref=e43]
+            - heading "Mission" [level=3] [ref=e49]
+          - generic [ref=e50]:
+            - img [ref=e52]
+            - heading "Mission" [level=3] [ref=e56]
+            - paragraph [ref=e57]:
+              - strong [ref=e58]: Current Mission —
+              - text: To empower regulated organizations to adopt digital workflows confidently through reliable, compliant and scalable solutions that improve quality, efficiency and cross-team collaboration.
+            - button "See more" [ref=e59]:
+              - text: See more
+              - img [ref=e60]
+        - generic [ref=e63] [cursor=pointer]:
+          - generic [ref=e65]:
+            - img "Vision" [ref=e67]
+            - heading "Vision" [level=3] [ref=e73]
+          - generic [ref=e74]:
+            - img [ref=e76]
+            - heading "Vision" [level=3] [ref=e79]
+            - paragraph [ref=e80]: To help organizations achieve operational excellence and regulatory confidence through innovative, intelligent, and compliant digital transformation solutions.
+  - contentinfo [ref=e81]:
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - img "Aurexa Technologies" [ref=e85]
+        - paragraph [ref=e86]: Where innovation meets compliance, and technology drives growth.
+      - generic [ref=e87]:
+        - heading "Company" [level=4] [ref=e88]
+        - list [ref=e89]:
+          - listitem [ref=e90]:
+            - link "About" [ref=e91] [cursor=pointer]:
+              - /url: "#/about"
+          - listitem [ref=e92]:
+            - link "Industries" [ref=e93] [cursor=pointer]:
+              - /url: "#/industries"
+          - listitem [ref=e94]:
+            - link "Careers" [ref=e95] [cursor=pointer]:
+              - /url: "#/careers"
+          - listitem [ref=e96]:
+            - link "Book a Demo" [ref=e97] [cursor=pointer]:
+              - /url: "#/book-demo"
+          - listitem [ref=e98]:
+            - link "Contact" [ref=e99] [cursor=pointer]:
+              - /url: "#/contact"
+          - listitem [ref=e100]:
+            - link "Privacy" [ref=e101] [cursor=pointer]:
+              - /url: "#/privacy"
+          - listitem [ref=e102]:
+            - link "Terms" [ref=e103] [cursor=pointer]:
+              - /url: "#/terms"
+      - generic [ref=e104]:
+        - heading "Follow us" [level=4] [ref=e105]
+        - generic [ref=e106]:
+          - link "LinkedIn" [ref=e107] [cursor=pointer]:
+            - /url: https://linkedin.com/company/aurexatech
+            - img [ref=e108]
+          - link "YouTube" [ref=e112] [cursor=pointer]:
+            - /url: https://youtube.com/@aurexatech
+            - img [ref=e113]
+          - link "X" [ref=e116] [cursor=pointer]:
+            - /url: https://x.com/aurexatech
+            - img [ref=e117]
+          - link "Facebook" [ref=e119] [cursor=pointer]:
+            - /url: https://facebook.com/aurexatech
+            - img [ref=e120]
+        - paragraph [ref=e122]: Follow Aurexa for product updates, regulatory guidance and case studies.
+    - generic [ref=e125]: © 2026 Aurexa Technologies. All rights reserved.

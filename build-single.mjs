@@ -257,6 +257,95 @@ const runtimeJs = `
     });
   }
 
+  // ---------- About tiles — inject bodies on demand ----------
+  // The static export only renders the headers of the three About tiles
+  // (Deep domain knowledge / Compliance-first engineering / Innovation at scale).
+  // Inject the body content and wire the chevron toggle.
+  var ABOUT_TILE_BODIES = {
+    "Deep domain knowledge": "At Aurexa Technologies our team brings decades of hands-on expertise across life sciences, pharmaceuticals, medical devices, and other highly regulated industries. This deep domain knowledge enables us to design solutions grounded in real-world operational challenges, regulatory expectations, and industry best practices. By combining practical industry experience with technology-driven innovation, we help organizations streamline compliance, improve quality processes, and achieve operational excellence with confidence.",
+    "Compliance-first engineering": "At Aurexa Technologies compliance-first engineering is embedded into the foundation of every platform we build. Our solutions are purpose-designed to align with GxP requirements, 21 CFR Part 11, ISO standards, and global data privacy regulations, ensuring regulatory readiness from day one. Rather than treating compliance as an afterthought, we engineer it directly into system architecture, workflows, security controls, audit trails, and validation frameworks to deliver reliable, inspection-ready digital solutions for highly regulated industries.",
+    "Innovation at scale": "At Aurexa Technologies innovation at scale is driven through cloud-native technologies, advanced analytics, and AI-ready architectures that convert quality and operational data into actionable, decision-grade insights. We continuously analyze evolving industry challenges to develop innovative, scalable solutions tailored for regulated environments. By combining modern digital capabilities with deep regulatory understanding, we enable organizations to improve efficiency, accelerate decision-making, and deliver measurable business value across enterprise operations."
+  };
+  function initAboutTiles(root){
+    var spans = (root||document).querySelectorAll('button > span.font-bold.text-lg');
+    spans.forEach(function(span){
+      var title = (span.textContent || "").trim();
+      var body = ABOUT_TILE_BODIES[title];
+      if(!body) return;
+      var btn = span.closest('button');
+      if(!btn || btn.__aboutBound) return;
+      var card = btn.parentElement; // the rounded-xl border-2 wrapper
+      if(!card) return;
+      btn.__aboutBound = true;
+      btn.__accBound = true; // skip generic accordion handler
+
+      // Build the panel
+      var panel = document.createElement("div");
+      panel.className = "px-5 pb-5 text-slate-800 border-t border-slate-200";
+      panel.style.display = "none";
+      var p = document.createElement("p");
+      p.className = "leading-relaxed font-semibold mt-4";
+      p.textContent = body;
+      panel.appendChild(p);
+      card.appendChild(panel);
+
+      var chev = btn.querySelector("svg");
+      var open = false;
+      btn.addEventListener("click", function(e){
+        e.preventDefault();
+        open = !open;
+        panel.style.display = open ? "" : "none";
+        if(chev){ chev.classList.toggle("rotate-180", open); }
+      });
+    });
+  }
+
+  // ---------- Mission "See more" — inject Future Scope on demand ----------
+  // The static export only renders the collapsed state of the Mission card.
+  // Find the "See more" button by its sibling <p><strong>Current Mission —</strong></p>
+  // and inject the Future Scope paragraph + toggle on click.
+  var FUTURE_SCOPE_TEXT = "To evolve Qcmetric and the Aurexa ecosystem into a predictive quality intelligence platform: Integrating automated controls, AI-driven risk indicators, and cross-system intelligence so compliance moves from checklist to continuous assurance.";
+  function initMissionExpand(root){
+    var strongs = (root||document).querySelectorAll('p > strong');
+    strongs.forEach(function(s){
+      var t = (s.textContent || "").trim();
+      if(t.indexOf("Current Mission") !== 0) return;
+      var p = s.parentElement;
+      if(!p || p.__missionBound) return;
+      // Find the See more/See less button as the next sibling of the <p>
+      var btn = p.nextElementSibling;
+      while(btn && btn.tagName !== "BUTTON"){ btn = btn.nextElementSibling; }
+      if(!btn) return;
+      p.__missionBound = true;
+      btn.__accBound = true; // prevent generic accordion handler from binding
+
+      // Create the Future Scope paragraph (initially hidden)
+      var future = document.createElement("p");
+      future.className = "text-black mt-3 leading-relaxed";
+      future.style.display = "none";
+      var strong = document.createElement("strong");
+      strong.textContent = "Future Scope — ";
+      future.appendChild(strong);
+      future.appendChild(document.createTextNode(FUTURE_SCOPE_TEXT));
+      p.parentNode.insertBefore(future, btn);
+
+      var open = false;
+      function render(){
+        future.style.display = open ? "" : "none";
+        btn.innerHTML = open
+          ? 'See less <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up"><path d="m18 15-6-6-6 6"></path></svg>'
+          : 'See more <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg>';
+      }
+      btn.addEventListener("click", function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        open = !open;
+        render();
+      });
+      render();
+    });
+  }
+
   // ---------- Forms -> mailto: ----------
   function initForms(root){
     var formCfg = {
@@ -517,6 +606,8 @@ const runtimeJs = `
   function initAll(){
     bindHeader();
     initFlipCards(document);
+    initMissionExpand(document);
+    initAboutTiles(document);
     initAccordions(document);
     initForms(document);
     initHeroPager(document);

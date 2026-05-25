@@ -129,7 +129,7 @@ export default function IndustriesPage() {
               >
                 <h3 className="text-xl font-bold text-slate-900 mb-3">{ind.title}</h3>
                 <p className="text-slate-700 text-sm leading-relaxed mb-3">{ind.summary}</p>
-                <div className="overflow-y-auto flex-1">
+                <div className="overflow-y-auto flex-1 pr-3">
                   <p className="text-slate-800 text-sm leading-relaxed">{ind.detail}</p>
                 </div>
               </div>
