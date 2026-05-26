@@ -33,7 +33,7 @@ export default function Header() {
             {NAV.map(n => <Link key={n.href} href={n.href} className="hover:text-brand-blue">{n.label}</Link>)}
           </nav>
           <div className="hidden md:flex items-center gap-3">
-            <Link href="/book-demo" className="px-6 py-3 rounded-lg bg-brand-blue text-white text-lg font-semibold hover:bg-brand-blueDark">Book a Demo</Link>
+            <Link href="/book-demo" className="px-4 py-2 rounded-lg bg-brand-blue text-white text-base font-semibold hover:bg-brand-blueDark">Book a Demo</Link>
           </div>
           <button className="md:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <X /> : <Menu />}
@@ -42,17 +42,38 @@ export default function Header() {
         {open && (
           <div className="md:hidden border-t border-slate-200 px-6 py-4 space-y-3">
             {NAV.map(n => <Link key={n.href} href={n.href} className="block text-lg">{n.label}</Link>)}
-            <Link href="/book-demo" className="block w-full text-center py-2.5 rounded-lg bg-brand-blue text-white text-lg">Book a Demo</Link>
+            <Link href="/book-demo" className="block w-full text-center py-2 rounded-lg bg-brand-blue text-white text-base">Book a Demo</Link>
           </div>
         )}
       </header>
-      <div className="fixed top-16 left-0 right-0 z-30 bg-gradient-to-r from-brand-blue/30 via-brand-teal/25 to-brand-blue/30 backdrop-blur-md border-b border-brand-blue/40 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-3 text-center">
-          <h2 className="text-sm md:text-base font-semibold text-brand-blueDark text-center">
-            We take the opportunity to analyse and develop innovative solutions for regulated industries
-          </h2>
+      <div className="fixed top-16 left-0 right-0 z-30 bg-gradient-to-r from-brand-blue/30 via-brand-teal/25 to-brand-blue/30 backdrop-blur-md border-b border-brand-blue/40 shadow-sm overflow-hidden">
+        <div className="py-3 whitespace-nowrap">
+          <div className="inline-block animate-scroll">
+            <span className="text-sm md:text-base font-semibold text-brand-blueDark px-8">
+              We take the opportunity to analyse and develop innovative solutions for regulated industries
+            </span>
+            <span className="text-sm md:text-base font-semibold text-brand-blueDark px-8">
+              We take the opportunity to analyse and develop innovative solutions for regulated industries
+            </span>
+            <span className="text-sm md:text-base font-semibold text-brand-blueDark px-8">
+              We take the opportunity to analyse and develop innovative solutions for regulated industries
+            </span>
+          </div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.333%);
+          }
+        }
+        .animate-scroll {
+          animation: scroll 25s linear infinite;
+        }
+      `}</style>
     </>
   );
 }

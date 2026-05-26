@@ -98,7 +98,7 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/book-demo" className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-brand-teal text-brand-blueDark font-semibold shadow-glow hover:brightness-110 transition-all hover:scale-105">
+              <Link href="/book-demo" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-teal text-brand-blueDark font-semibold shadow-glow hover:brightness-110 transition-all hover:scale-105">
                 <Calendar size={16} /> Book a Demo
               </Link>
               <Link href="/products" className="px-5 py-3 rounded-lg glass font-semibold text-white hover:brightness-110 transition-all hover:scale-105 border border-white/30">

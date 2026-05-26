@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, Youtube, Twitter, Facebook } from "lucide-react";
+import { Linkedin, Facebook, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -34,10 +34,9 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-3">Follow us</h4>
           <div className="flex items-center gap-3">
-            <a href="https://linkedin.com/company/aurexatech" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={20} /></a>
-            <a href="https://youtube.com/@aurexatech" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><Youtube size={20} /></a>
-            <a href="https://x.com/aurexatech" target="_blank" rel="noopener noreferrer" aria-label="X"><Twitter size={20} /></a>
-            <a href="https://facebook.com/aurexatech" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={20} /></a>
+            <a href="https://www.linkedin.com/company/aurexa-technologies-pvt-ltd/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={20} /></a>
+            <a href="https://www.facebook.com/profile.php?id=61584510448468" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={20} /></a>
+            <a href="https://www.instagram.com/aurexatechnologies/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={20} /></a>
           </div>
           <p className="mt-3 text-xs text-white/70">Follow Aurexa for product updates, regulatory guidance and case studies.</p>
         </div>

@@ -23,7 +23,7 @@ const CARDS = [
     iconBg: 'bg-brand-teal/20',
     iconColor: 'text-brand-tealDark',
     image: 'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=800',
-    currentText: 'To help organizations achieve operational excellence and regulatory confidence through innovative, intelligent, and compliant digital transformation solutions.',
+    currentText: 'To support organizations achieve operational excellence and regulatory confidence through innovative, intelligent, and compliant digital transformation solutions.',
     hasExpand: false
   }
 ];
