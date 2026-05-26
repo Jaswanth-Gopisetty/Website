@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { X, Upload, FileText, ChevronDown } from "lucide-react";
+import { Upload, FileText, ChevronDown } from "lucide-react";
 
 const ROLES = [
   { title: "Product Analyst — QMS", responsibilities: ["Gather URS, translate into user stories", "Validate acceptance criteria", "Liaise with QA & engineering"], musts: ["Understanding of GxP processes or strong curiosity and ability to learn quickly"] },
@@ -32,8 +32,6 @@ const COUNTRY_CODES = [
 ];
 
 export default function CareersPage() {
-  const [showForm, setShowForm] = useState(false);
-  const [selectedRole, setSelectedRole] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -41,9 +39,9 @@ export default function CareersPage() {
     countryCode: "+91",
     linkedin: "",
     currentLocation: "",
+    positionOfInterest: "",
     resume: null as File | null,
     coverLetter: "",
-    whyJoin: "",
     references: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -120,12 +118,6 @@ export default function CareersPage() {
     setCountrySearch("");
   };
 
-  const handleApply = (roleTitle: string) => {
-    setSelectedRole(roleTitle);
-    setShowForm(true);
-    setStatus("idle");
-  };
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -150,14 +142,13 @@ export default function CareersPage() {
 
     // Create FormData for file upload
     const submitData = new FormData();
-    submitData.append("role", selectedRole);
+    submitData.append("positionOfInterest", formData.positionOfInterest);
     submitData.append("fullName", formData.fullName);
     submitData.append("email", formData.email);
     submitData.append("phone", `${formData.countryCode} ${formData.phone}`);
     submitData.append("linkedin", formData.linkedin);
     submitData.append("currentLocation", formData.currentLocation);
     submitData.append("coverLetter", formData.coverLetter);
-    submitData.append("whyJoin", formData.whyJoin);
     submitData.append("references", formData.references);
     if (formData.resume) {
       submitData.append("resume", formData.resume);
@@ -179,26 +170,20 @@ export default function CareersPage() {
           countryCode: "+91",
           linkedin: "",
           currentLocation: "",
+          positionOfInterest: "",
           resume: null,
           coverLetter: "",
-          whyJoin: "",
           references: "",
         });
         setTimeout(() => {
-          setShowForm(false);
           setStatus("idle");
-        }, 3000);
+        }, 5000);
       } else {
         setStatus("error");
       }
     } catch (error) {
       setStatus("error");
     }
-  };
-
-  const handleCloseForm = () => {
-    setShowForm(false);
-    setStatus("idle");
   };
 
   return (
@@ -210,53 +195,18 @@ export default function CareersPage() {
             Join a specialist team building regulated software that matters. Expect collaborative teams, domain learning opportunities and real ownership over quality-critical products.
           </p>
         </div>
-        <div className="mt-10 grid md:grid-cols-2 gap-6">
-          {ROLES.map(r => (
-            <details key={r.title} className="rounded-2xl border border-slate-200 bg-white p-6" open>
-              <summary className="cursor-pointer font-semibold text-lg text-black">{r.title}</summary>
-              <div className="mt-4 grid gap-3 text-sm text-black">
-                <div>
-                  <p className="font-medium text-black">Responsibilities</p>
-                  <ul className="mt-1 space-y-1">{r.responsibilities.map(x => <li key={x}>▸ {x}</li>)}</ul>
-                </div>
-                <div>
-                  <p className="font-medium text-black">Must-have</p>
-                  <ul className="mt-1 space-y-1">{r.musts.map(x => <li key={x}>▸ {x}</li>)}</ul>
-                </div>
-                <button 
-                  onClick={() => handleApply(r.title)}
-                  className="mt-2 self-start px-4 py-2 rounded-lg bg-brand-blue text-white text-sm font-semibold hover:bg-brand-blueDark transition-colors"
-                >
-                  Apply
-                </button>
-              </div>
-            </details>
-          ))}
-        </div>
       </section>
 
-      {/* Application Form Modal */}
-      {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            {/* Header */}
-            <div className="sticky top-0 bg-white border-b border-slate-200 p-6 flex items-center justify-between">
-              <div>
-                <h2 className="text-2xl font-bold text-slate-900">Apply for Position</h2>
-                <p className="text-sm text-slate-600 mt-1">{selectedRole}</p>
-              </div>
-              <button
-                type="button"
-                onClick={handleCloseForm}
-                aria-label="Close application form"
-                className="p-2 hover:bg-slate-100 rounded-lg transition-colors"
-              >
-                <X size={24} className="text-slate-600" />
-              </button>
-            </div>
+      {/* Join Our Team Form */}
+      <section className="section bg-gradient-to-br from-brand-blue/5 to-brand-teal/5">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-slate-900">Interested in Joining Our Team?</h2>
+            <p className="text-slate-600 mt-2">Fill out the form below and we'll get back to you soon.</p>
+          </div>
 
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Personal Information */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-slate-900 border-b border-slate-200 pb-2">
@@ -404,12 +354,26 @@ export default function CareersPage() {
                     />
                   </div>
                 </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                    Position of Interest <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.positionOfInterest}
+                    onChange={(e) => setFormData({ ...formData, positionOfInterest: e.target.value })}
+                    placeholder="e.g., Product Analyst, QA Engineer, or describe your area of interest"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-transparent"
+                  />
+                </div>
               </div>
 
               {/* Resume Upload */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-slate-900 border-b border-slate-200 pb-2">
-                  Resume & Documents
+                  Resume & Cover Letter
                 </h3>
                 
                 <div>
@@ -454,34 +418,14 @@ export default function CareersPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Cover Letter
-                  </label>
-                  <textarea
-                    value={formData.coverLetter}
-                    onChange={(e) => setFormData({ ...formData, coverLetter: e.target.value })}
-                    rows={4}
-                    placeholder="Tell us about your background and interest in this role..."
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-transparent resize-none"
-                  />
-                </div>
-              </div>
-
-              {/* Short Answer */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-slate-900 border-b border-slate-200 pb-2">
-                  Short Answer
-                </h3>
-                
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Why do you want to join Aurexa? <span className="text-red-500">*</span>
+                    Cover Letter / Why You Want to Join Aurexa <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     required
-                    value={formData.whyJoin}
-                    onChange={(e) => setFormData({ ...formData, whyJoin: e.target.value })}
-                    rows={5}
-                    placeholder="Share your motivation for joining our team and how your experience aligns with our mission..."
+                    value={formData.coverLetter}
+                    onChange={(e) => setFormData({ ...formData, coverLetter: e.target.value })}
+                    rows={6}
+                    placeholder="Tell us about your background, interest in this role, and why you want to join our team..."
                     className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-transparent resize-none"
                   />
                   <p className="text-xs text-slate-500 mt-1">Minimum 100 characters</p>
@@ -491,7 +435,7 @@ export default function CareersPage() {
               {/* References */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-slate-900 border-b border-slate-200 pb-2">
-                  References
+                  References (Optional)
                 </h3>
                 
                 <div>
@@ -501,7 +445,7 @@ export default function CareersPage() {
                   <textarea
                     value={formData.references}
                     onChange={(e) => setFormData({ ...formData, references: e.target.value })}
-                    rows={5}
+                    rows={4}
                     placeholder="Please provide 2-3 professional references with their name, position, company, email, and phone number..."
                     className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-transparent resize-none"
                   />
@@ -525,18 +469,11 @@ export default function CareersPage() {
               )}
 
               {/* Submit Button */}
-              <div className="flex gap-3 pt-4 border-t border-slate-200">
-                <button
-                  type="button"
-                  onClick={handleCloseForm}
-                  className="flex-1 px-6 py-3 border border-slate-300 rounded-lg text-slate-700 font-semibold hover:bg-slate-50 transition-colors"
-                >
-                  Cancel
-                </button>
+              <div className="pt-4">
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="flex-1 px-6 py-3 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-blueDark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-6 py-3 bg-brand-blue text-white rounded-lg font-semibold hover:bg-brand-blueDark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === "sending" ? "Submitting..." : "Submit Application"}
                 </button>
@@ -544,7 +481,7 @@ export default function CareersPage() {
             </form>
           </div>
         </div>
-      )}
+      </section>
     </>
   );
 }

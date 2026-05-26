@@ -51,9 +51,9 @@ function extractMain(html) {
 function extractHeaderAndBanner(html) {
   const headerMatch = html.match(/<header\b[\s\S]*?<\/header>/i);
   if (!headerMatch) throw new Error("no <header>");
-  // banner is the next <div class="fixed top-16 ...">...</div>
+  // banner is the next <div ...class="...fixed top-16 ...">...</div>
   const after = html.slice(headerMatch.index + headerMatch[0].length);
-  const banner = after.match(/^[\s]*<div class="fixed top-16[\s\S]*?<\/div>\s*<\/div>/i);
+  const banner = after.match(/^[\s]*<div\b[^>]*class="[^"]*\bfixed top-16\b[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/i);
   return headerMatch[0] + (banner ? banner[0] : "");
 }
 
@@ -640,6 +640,9 @@ ${css}
 /* Single-file additions */
 .page-section { display: none; }
 .page-section.is-active { display: block; }
+/* Scrolling secondary header marquee (styled-jsx isn't bundled into static export) */
+@keyframes aurexa-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
+.animate-scroll { animation: aurexa-marquee 25s linear infinite; }
 /* Ensure Next-rendered hero blocks aren't permanently hidden by their initial opacity:0 inline style */
 html, body { background: #ffffff; }
 /* Justify all text content */
